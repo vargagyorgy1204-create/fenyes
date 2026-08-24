@@ -6,3 +6,6 @@ Thumbs.db
 # Editor
 .vscode/
 .idea/
+
+# Playwright MCP screenshots/snapshots
+.playwright-mcp/
