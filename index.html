@@ -1,0 +1,702 @@
+<!doctype html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fényes Takarítás — Professzionális Takarítási Szolgáltatások</title>
+<meta name="description" content="Megbízható lakás-, iroda- és mélytakarítási szolgáltatások Budapesten és környékén. Kérjen ingyenes árajánlatot még ma!">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%234CB648'%3E%3Cpath d='M12 2l2.2 6.6L21 11l-6.8 2.4L12 20l-2.2-6.6L3 11l6.8-2.4z'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+<a class="skip-link" href="#main">Ugrás a tartalomra</a>
+
+<!-- ===================== TOP BAR ===================== -->
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-info">
+      <a href="tel:+3614452210">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        +36 1 445 2210
+      </a>
+      <span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;color:#4CB648;display:inline-block;vertical-align:-3px;margin-right:6px;"><path d="M3 8l7.89 5.26a2 2 0 0 0 2.22 0L21 8M5 19h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2z"/></svg>
+        info@fenyestakaritas.hu
+      </span>
+      <span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;color:#4CB648;display:inline-block;vertical-align:-3px;margin-right:6px;"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Budapest, Váci út 42.
+      </span>
+    </div>
+    <div class="topbar-social">
+      <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z"/></svg></a>
+      <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+      <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.24 8.25h4.5V23H.24V8.25zM8.24 8.25h4.31v2.01h.06c.6-1.13 2.07-2.33 4.26-2.33 4.55 0 5.39 3 5.39 6.9V23h-4.5v-6.36c0-1.52-.03-3.47-2.11-3.47-2.12 0-2.44 1.65-2.44 3.36V23h-4.5V8.25z"/></svg></a>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== HEADER ===================== -->
+<header class="header" id="header">
+  <nav class="nav container">
+    <a href="#top" class="logo">
+      <span class="logo-mark">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.2L22 12l-7.6 2.8L12 22l-2.4-7.2L2 12l7.6-2.8z"/></svg>
+      </span>
+      Fényes
+    </a>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Menü megnyitása" aria-expanded="false" aria-controls="navLinks">
+      <svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#top" class="active">Kezdőlap</a></li>
+      <li><a href="#rolunk">Rólunk</a></li>
+      <li><a href="#szolgaltatasok">Szolgáltatások</a></li>
+      <li><a href="#velemenyek">Vélemények</a></li>
+      <li><a href="#csapat">Csapatunk</a></li>
+      <li><a href="#kapcsolat">Kapcsolat</a></li>
+      <li class="nav-mobile-cta">
+        <a href="tel:+3614452210" class="nav-mobile-phone">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          +36 1 445 2210
+        </a>
+        <a href="#kapcsolat" class="btn btn-primary">Ingyenes Árajánlat</a>
+      </li>
+    </ul>
+
+    <div class="nav-actions">
+      <div class="nav-phone">
+        <span class="nav-phone-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </span>
+        <span class="nav-phone-text">
+          <small>Hívjon minket</small>
+          <strong>+36 1 445 2210</strong>
+        </span>
+      </div>
+      <a href="#kapcsolat" class="btn btn-primary">Ingyenes Árajánlat</a>
+    </div>
+  </nav>
+</header>
+<div class="nav-overlay" id="navOverlay"></div>
+
+<main id="main">
+<div id="top"></div>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero">
+  <div class="hero-blob hero-blob--1 parallax" data-parallax="0.15" aria-hidden="true"></div>
+  <div class="container">
+    <div class="hero-content reveal in-view">
+      <span class="hero-eyebrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.2L22 12l-7.6 2.8L12 22l-2.4-7.2L2 12l7.6-2.8z"/></svg>
+        Prémium Takarítási Szolgáltatás
+      </span>
+      <h1>
+        Nem Csak Takarítunk.
+        <span class="accent">Új Életet Lehelünk Otthonába.</span>
+      </h1>
+      <p class="hero-text">Precíz, megbízható és környezetbarát takarítási szolgáltatások otthonok és irodák számára. Tapasztalt szakembereink gondoskodnak róla, hogy tere makulátlanul ragyogjon — minden alkalommal.</p>
+
+      <div class="hero-actions">
+        <a href="#kapcsolat" class="btn btn-primary">
+          Ingyenes Árajánlat
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <a href="#szolgaltatasok" class="btn btn-outline">Szolgáltatásaink</a>
+      </div>
+
+      <div class="hero-proof">
+        <div class="avatar-stack">
+          <img src="images/testimonial-1.jpg" alt="Elégedett ügyfél" loading="lazy">
+          <img src="images/testimonial-2.jpg" alt="Elégedett ügyfél" loading="lazy">
+          <img src="images/testimonial-3.jpg" alt="Elégedett ügyfél" loading="lazy">
+        </div>
+        <div class="hero-proof-text">
+          <span class="stars">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+          </span>
+          <strong>1200+ Elégedett Ügyfél</strong>
+          <span>Bízza ránk otthona tisztaságát</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-visual reveal reveal-delay-2 in-view">
+      <div class="hero-photo-frame reveal-zoom in-view">
+        <img class="parallax" data-parallax="-0.08" src="images/hero-cleaner.jpg" alt="Mosolygó takarítónő tisztítószerrel a kezében" loading="eager">
+      </div>
+      <div class="hero-badge hero-badge--experience">
+        <span class="num">10+</span>
+        <span class="label">Év Tapasztalat A Szakmában</span>
+      </div>
+      <div class="hero-badge hero-badge--rating">
+        <span class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+        </span>
+        <span>
+          <strong>100% Garancia</strong>
+          <span>Elégedettségi garanciával</span>
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TRUST STRIP ===================== -->
+<section class="trust-strip">
+  <div class="container">
+    <div class="trust-grid">
+      <div class="trust-item reveal in-view">
+        <span class="trust-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><line x1="16" y1="8" x2="2" y2="22"/><line x1="17.5" y1="15" x2="9" y2="15"/></svg>
+        </span>
+        <span class="trust-copy">
+          <strong>Képzett Szakemberek</strong>
+          <span>Megbízható, átvilágított csapat</span>
+        </span>
+      </div>
+      <div class="trust-item reveal reveal-delay-1 in-view">
+        <span class="trust-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 11 13 11 11"/></svg>
+        </span>
+        <span class="trust-copy">
+          <strong>Környezetbarát</strong>
+          <span>Biztonságos, természetes szerek</span>
+        </span>
+      </div>
+      <div class="trust-item reveal reveal-delay-2 in-view">
+        <span class="trust-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        </span>
+        <span class="trust-copy">
+          <strong>Elégedettségi Garancia</strong>
+          <span>100%-os minőségi garanciával</span>
+        </span>
+      </div>
+      <div class="trust-item reveal reveal-delay-3 in-view">
+        <span class="trust-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </span>
+        <span class="trust-copy">
+          <strong>Rugalmas Időbeosztás</strong>
+          <span>Igényeihez igazítva</span>
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SERVICES ===================== -->
+<section class="section-pad" id="szolgaltatasok">
+  <div class="container">
+    <div class="services-top">
+      <div class="section-head reveal in-view">
+        <span class="eyebrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+          Szolgáltatásaink
+        </span>
+        <h2>Takarítási Megoldások Az Ön Igényeire Szabva</h2>
+        <p>Az otthoni takarítástól az irodai mélytisztításig — mindent megtalál nálunk, amire szüksége lehet egy makulátlan térhez.</p>
+      </div>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card reveal in-view">
+        <span class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/></svg>
+        </span>
+        <h3>Lakástakarítás</h3>
+        <p>Rendszeres vagy alkalmi takarítás otthonába, hogy mindig tiszta és barátságos legyen.</p>
+        <span class="service-link">Részletek <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      </div>
+
+      <div class="service-card reveal reveal-delay-1 in-view">
+        <span class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/><line x1="9" y1="9" x2="9" y2="9.01"/><line x1="9" y1="12" x2="9" y2="12.01"/><line x1="9" y1="15" x2="9" y2="15.01"/><line x1="9" y1="18" x2="9" y2="18.01"/></svg>
+        </span>
+        <h3>Irodatakarítás</h3>
+        <p>Makulátlan és higiénikus munkakörnyezet vállalkozása és munkatársai számára.</p>
+        <span class="service-link">Részletek <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      </div>
+
+      <div class="service-card reveal reveal-delay-2 in-view">
+        <span class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/><circle cx="12" cy="12" r="4"/></svg>
+        </span>
+        <h3>Mélytakarítás</h3>
+        <p>Alapos, részletekre figyelő tisztítás minden zugban — a rejtett szennyeződésekig.</p>
+        <span class="service-link">Részletek <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      </div>
+
+      <div class="service-card reveal in-view">
+        <span class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="7" width="15" height="11" rx="1"/><path d="M16 10h3.28a2 2 0 0 1 1.72 1l1.92 3.4a2 2 0 0 1 .08 1.79V18a1 1 0 0 1-1 1h-1"/><circle cx="5.5" cy="18.5" r="1.8"/><circle cx="16.5" cy="18.5" r="1.8"/></svg>
+        </span>
+        <h3>Költözési Takarítás</h3>
+        <p>Zökkenőmentes be- és kiköltözés friss, makulátlan lakótérrel.</p>
+        <span class="service-link">Részletek <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      </div>
+
+      <div class="service-card reveal reveal-delay-1 in-view">
+        <span class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg>
+        </span>
+        <h3>Szőnyegtisztítás</h3>
+        <p>Professzionális folttalanítás és mélytisztítás szőnyegeknek, kárpitoknak.</p>
+        <span class="service-link">Részletek <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      </div>
+
+      <div class="service-card reveal reveal-delay-2 in-view">
+        <span class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="1"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="12" y1="3" x2="12" y2="21"/></svg>
+        </span>
+        <h3>Ablaktisztítás</h3>
+        <p>Csíkmentes, ragyogóan tiszta ablakok — belülről és kívülről egyaránt.</p>
+        <span class="service-link">Részletek <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      </div>
+    </div>
+
+    <div class="services-cta reveal in-view">
+      <a href="#kapcsolat" class="btn btn-outline">Összes Szolgáltatás Megtekintése</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== EXCELLENCE / STATS ===================== -->
+<section class="section-pad excellence" id="rolunk">
+  <div class="container">
+    <div class="excellence-content reveal in-view">
+      <span class="eyebrow eyebrow--on-dark">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.2L22 12l-7.6 2.8L12 22l-2.4-7.2L2 12l7.6-2.8z"/></svg>
+        Miért Válasszon Minket
+      </span>
+      <h2>Elkötelezettek Vagyunk A Kiválóság Iránt</h2>
+      <p class="excellence-text">A Fényes Takarításnál minden megbízást szakértelemmel, odafigyeléssel és a részletekre való precíz figyelemmel végzünk. Célunk, hogy Ön mindig hazatérhessen egy ragyogó, nyugodt otthonba.</p>
+
+      <div class="stat-grid">
+        <div class="stat-card reveal in-view">
+          <span class="stat-num"><span class="counter" data-target="1200">0</span>+</span>
+          <span class="stat-label">Elégedett Ügyfél</span>
+        </div>
+        <div class="stat-card reveal reveal-delay-1 in-view">
+          <span class="stat-num"><span class="counter" data-target="2500">0</span>+</span>
+          <span class="stat-label">Befejezett Projekt</span>
+        </div>
+        <div class="stat-card reveal reveal-delay-2 in-view">
+          <span class="stat-num"><span class="counter" data-target="100">0</span>%</span>
+          <span class="stat-label">Elégedettségi Arány</span>
+        </div>
+        <div class="stat-card reveal reveal-delay-3 in-view">
+          <span class="stat-num"><span class="counter" data-target="10">0</span>+</span>
+          <span class="stat-label">Év Tapasztalat</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="excellence-visual reveal reveal-delay-2 in-view">
+      <div class="excellence-photo reveal-zoom in-view">
+        <img src="images/lifestyle-duo.jpg" alt="Két mosolygó takarítási szakember" loading="lazy">
+      </div>
+      <div class="excellence-check">
+        <span class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </span>
+        <span>
+          <strong>Minőségellenőrzött Munka</strong>
+          <span>Minden takarítás után</span>
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== HOW IT WORKS ===================== -->
+<section class="section-pad">
+  <div class="container">
+    <div class="section-head center reveal in-view" style="margin-left:auto;margin-right:auto;">
+      <span class="eyebrow" style="margin-left:auto;margin-right:auto;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Folyamat
+      </span>
+      <h2>Egyszerű Lépések A Tiszta Otthonhoz</h2>
+      <p>Néhány kattintással lefoglalhatja takarítását — mi elvégezzük a nehezét.</p>
+    </div>
+
+    <div class="steps-grid">
+      <div class="step-card reveal in-view">
+        <span class="step-num">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </span>
+        <h3>1. Foglaljon Online</h3>
+        <p>Válassza ki a kívánt szolgáltatást és időpontot pár kattintással.</p>
+        <span class="step-connector" aria-hidden="true"></span>
+      </div>
+      <div class="step-card reveal reveal-delay-1 in-view">
+        <span class="step-num">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><line x1="16" y1="8" x2="2" y2="22"/><line x1="17.5" y1="15" x2="9" y2="15"/></svg>
+        </span>
+        <h3>2. Mi Takarítunk</h3>
+        <p>Képzett szakembereink pontosan és alaposan végzik a munkát.</p>
+        <span class="step-connector" aria-hidden="true"></span>
+      </div>
+      <div class="step-card reveal reveal-delay-2 in-view">
+        <span class="step-num">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4z"/><line x1="6" y1="2" x2="6" y2="5"/><line x1="10" y1="2" x2="10" y2="5"/><line x1="14" y1="2" x2="14" y2="5"/></svg>
+        </span>
+        <h3>3. Ön Pihen</h3>
+        <p>Élvezze a makulátlan teret, mi közben mindent elrendezünk.</p>
+        <span class="step-connector" aria-hidden="true"></span>
+      </div>
+      <div class="step-card reveal reveal-delay-3 in-view">
+        <span class="step-num">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg>
+        </span>
+        <h3>4. Ismételje</h3>
+        <p>Állítsa be rendszeres takarítási rendjét igényei szerint.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TESTIMONIALS ===================== -->
+<section class="section-pad testimonials" id="velemenyek">
+  <div class="container">
+    <div class="section-head center reveal in-view" style="margin-left:auto;margin-right:auto;">
+      <span class="eyebrow" style="margin-left:auto;margin-right:auto;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        Amit Ügyfeleink Mondanak
+      </span>
+      <h2>Több Ezer Elégedett Ügyfél Bizalma</h2>
+      <p>Nem csak mi mondjuk — hallgassa meg, mit gondolnak rólunk azok, akiknek már segítettünk.</p>
+    </div>
+
+    <div class="t-slider-wrap reveal in-view">
+      <div class="t-track" id="tTrack">
+        <div class="t-card reveal in-view">
+          <div class="t-stars">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+          </div>
+          <p class="t-quote">„Hihetetlen alapos munkát végeztek! Az egész lakás ragyogott, amikor hazaértem. Végre találtam egy céget, akikben tényleg megbízhatok.”</p>
+          <div class="t-person">
+            <img src="images/testimonial-1.jpg" alt="Nagy Éva" loading="lazy">
+            <span>
+              <strong>Nagy Éva</strong>
+              <span>Háztulajdonos, Budapest</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="t-card reveal reveal-delay-2 in-view">
+          <div class="t-stars">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+          </div>
+          <p class="t-quote">„Az irodánk azóta minden nap makulátlan. Gyors, profi és rugalmas csapat — pontosan azt kaptuk, amit ígértek, sőt még többet is.”</p>
+          <div class="t-person">
+            <img src="images/testimonial-2.jpg" alt="Kovács Péter" loading="lazy">
+            <span>
+              <strong>Kovács Péter</strong>
+              <span>Irodavezető, XIII. kerület</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="t-card reveal reveal-delay-4 in-view">
+          <div class="t-stars">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+          </div>
+          <p class="t-quote">„Két gyermekes anyukaként nincs időm mindenre. A Fényes csapata levette a vállamról a takarítás terhét — barátságosak és nagyon precízek.”</p>
+          <div class="t-person">
+            <img src="images/testimonial-3.jpg" alt="Tóth Anna" loading="lazy">
+            <span>
+              <strong>Tóth Anna</strong>
+              <span>Édesanya, Budaörs</span>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="t-controls">
+        <button class="icon-btn" id="tPrev" aria-label="Előző vélemény">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <div class="t-dots" id="tDots"></div>
+        <button class="icon-btn" id="tNext" aria-label="Következő vélemény">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CTA BANNER ===================== -->
+<section class="section-pad" style="padding-top:0;">
+  <div class="container">
+    <div class="cta-banner reveal in-view">
+      <div>
+        <h2>Készen Áll A Makulátlan Térre?</h2>
+        <p>Foglalja le takarítását még ma, és tapasztalja meg a különbséget első kézből.</p>
+      </div>
+      <div class="cta-actions">
+        <a href="#kapcsolat" class="btn btn-white">Ingyenes Árajánlat Kérése</a>
+        <a href="tel:+3614452210" class="btn btn-outline-light">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Hívjon Most
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SHINE / VIDEO ===================== -->
+<section class="section-pad shine">
+  <div class="container">
+    <div class="shine-visual reveal in-view">
+      <div class="shine-photo reveal-zoom in-view">
+        <img src="images/window-cleaning.jpg" alt="Ablaktisztítás közben" loading="lazy">
+        <button class="play-btn" id="playBtn" aria-label="Bemutató videó lejátszása">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="shine-content reveal reveal-delay-1 in-view">
+      <span class="eyebrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.2L22 12l-7.6 2.8L12 22l-2.4-7.2L2 12l7.6-2.8z"/></svg>
+        Egy Tiszta Otthon Előnyei
+      </span>
+      <h2>Mi Takarítunk. Ön Ragyog.</h2>
+      <p style="margin-top:16px;font-size:16.5px;">Egy tiszta otthon nem luxus — hanem a nyugodt mindennapok alapja. Ezért dolgozunk mi keményen, hogy Önnek ne kelljen.</p>
+
+      <div class="shine-list">
+        <div class="shine-item">
+          <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+          <span>
+            <h4>Képzett És Átvilágított Csapat</h4>
+            <p>Minden munkatársunk gondos kiválasztáson és képzésen esik át.</p>
+          </span>
+        </div>
+        <div class="shine-item">
+          <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 11 13 11 11"/></svg></span>
+          <span>
+            <h4>Környezetbarát Termékek</h4>
+            <p>Gyermekekre és háziállatokra is biztonságos tisztítószereket használunk.</p>
+          </span>
+        </div>
+        <div class="shine-item">
+          <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span>
+          <span>
+            <h4>Rugalmas Időpontfoglalás</h4>
+            <p>Egyszeri, heti vagy havi takarítás — Ön dönti el, mikor és milyen gyakran.</p>
+          </span>
+        </div>
+      </div>
+
+      <a href="#kapcsolat" class="btn btn-primary" style="margin-top:32px;">Tudjon Meg Többet</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TEAM ===================== -->
+<section class="section-pad" id="csapat" style="background:var(--color-bg-soft);">
+  <div class="container">
+    <div class="team-top">
+      <div class="section-head reveal in-view">
+        <span class="eyebrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          Csapatunk
+        </span>
+        <h2>Profi. Barátságos. Megbízható.</h2>
+        <p>Ismerje meg azt a tapasztalt csapatot, akikre nyugodt szívvel bízhatja otthona vagy irodája tisztaságát.</p>
+      </div>
+    </div>
+
+    <div class="team-grid">
+      <div class="team-card reveal in-view">
+        <div class="team-photo reveal-zoom in-view">
+          <img src="images/team-1.jpg" alt="Szabó Mária — Takarítási Szakértő" loading="lazy">
+          <div class="team-social">
+            <a href="#" aria-label="Facebook profil"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z"/></svg></a>
+            <a href="#" aria-label="Instagram profil"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/></svg></a>
+            <a href="#" aria-label="LinkedIn profil"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.24 8.25h4.5V23H.24V8.25zM8.24 8.25h4.31v2.01h.06c.6-1.13 2.07-2.33 4.26-2.33 4.55 0 5.39 3 5.39 6.9V23h-4.5v-6.36c0-1.52-.03-3.47-2.11-3.47-2.12 0-2.44 1.65-2.44 3.36V23h-4.5V8.25z"/></svg></a>
+          </div>
+        </div>
+        <h3>Szabó Mária</h3>
+        <span>Takarítási Szakértő</span>
+      </div>
+
+      <div class="team-card reveal reveal-delay-1 in-view">
+        <div class="team-photo reveal-zoom in-view">
+          <img src="images/team-2.jpg" alt="Kiss Nóra — Csapatvezető" loading="lazy">
+          <div class="team-social">
+            <a href="#" aria-label="Facebook profil"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z"/></svg></a>
+            <a href="#" aria-label="Instagram profil"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/></svg></a>
+            <a href="#" aria-label="LinkedIn profil"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.24 8.25h4.5V23H.24V8.25zM8.24 8.25h4.31v2.01h.06c.6-1.13 2.07-2.33 4.26-2.33 4.55 0 5.39 3 5.39 6.9V23h-4.5v-6.36c0-1.52-.03-3.47-2.11-3.47-2.12 0-2.44 1.65-2.44 3.36V23h-4.5V8.25z"/></svg></a>
+          </div>
+        </div>
+        <h3>Kiss Nóra</h3>
+        <span>Csapatvezető</span>
+      </div>
+
+      <div class="team-card reveal reveal-delay-2 in-view">
+        <div class="team-photo reveal-zoom in-view">
+          <img src="images/team-3.jpg" alt="Varga Tamás — Ügyfélkapcsolat" loading="lazy">
+          <div class="team-social">
+            <a href="#" aria-label="Facebook profil"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z"/></svg></a>
+            <a href="#" aria-label="Instagram profil"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/></svg></a>
+            <a href="#" aria-label="LinkedIn profil"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.24 8.25h4.5V23H.24V8.25zM8.24 8.25h4.31v2.01h.06c.6-1.13 2.07-2.33 4.26-2.33 4.55 0 5.39 3 5.39 6.9V23h-4.5v-6.36c0-1.52-.03-3.47-2.11-3.47-2.12 0-2.44 1.65-2.44 3.36V23h-4.5V8.25z"/></svg></a>
+          </div>
+        </div>
+        <h3>Varga Tamás</h3>
+        <span>Ügyfélkapcsolat</span>
+      </div>
+    </div>
+
+    <div class="team-cta reveal in-view">
+      <a href="#kapcsolat" class="btn btn-outline">Csapatunk Megismerése</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== BRANDS ===================== -->
+<section class="brands">
+  <div class="container">
+    <p class="brands-label">Vezető Márkák Bizalma Övezi</p>
+    <div class="brands-row">
+      <span class="brand-logo reveal in-view"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/></svg>OtthonPlus</span>
+      <span class="brand-logo reveal reveal-delay-1 in-view"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.2L22 12l-7.6 2.8L12 22l-2.4-7.2L2 12l7.6-2.8z"/></svg>TisztaMax</span>
+      <span class="brand-logo reveal reveal-delay-2 in-view"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/></svg>ZöldOtthon</span>
+      <span class="brand-logo reveal reveal-delay-3 in-view"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="9" width="18" height="12" rx="1"/><path d="M3 9l2.5-5h13L21 9"/></svg>IrodaKlíma</span>
+      <span class="brand-logo reveal reveal-delay-4 in-view"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg>GyorsTakarítás</span>
+      <span class="brand-logo reveal reveal-delay-5 in-view"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/></svg>Ragyogás</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== NEWSLETTER ===================== -->
+<section class="section-pad newsletter">
+  <div class="container">
+    <div class="newsletter-box reveal in-view">
+      <div>
+        <h2>Ne Maradjon Le Exkluzív Ajánlatainkról</h2>
+        <p>Iratkozzon fel hírlevelünkre, és értesüljön elsőként akcióinkról, kedvezményeinkről és hasznos takarítási tippjeinkről.</p>
+      </div>
+      <div>
+        <form class="newsletter-form" id="newsletterForm">
+          <input type="email" required placeholder="Adja meg e-mail címét" aria-label="E-mail cím">
+          <button type="submit" class="btn btn-primary">Feliratkozás</button>
+        </form>
+        <p class="newsletter-note">Bármikor leiratkozhat. Adatait bizalmasan kezeljük.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="footer" id="kapcsolat">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-about">
+        <a href="#top" class="logo">
+          <span class="logo-mark">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.2L22 12l-7.6 2.8L12 22l-2.4-7.2L2 12l7.6-2.8z"/></svg>
+          </span>
+          Fényes
+        </a>
+        <p>Több mint 10 éve nyújtunk megbízható, precíz és környezetbarát takarítási szolgáltatásokat magánszemélyeknek és vállalkozásoknak Budapesten és környékén.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.24 8.25h4.5V23H.24V8.25zM8.24 8.25h4.31v2.01h.06c.6-1.13 2.07-2.33 4.26-2.33 4.55 0 5.39 3 5.39 6.9V23h-4.5v-6.36c0-1.52-.03-3.47-2.11-3.47-2.12 0-2.44 1.65-2.44 3.36V23h-4.5V8.25z"/></svg></a>
+          <a href="#" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.06c-.24.68-1.4 1.3-1.94 1.38-.5.08-1.12.11-1.8-.11-.42-.13-.95-.31-1.64-.6-2.88-1.24-4.76-4.14-4.9-4.33-.14-.19-1.17-1.56-1.17-2.98s.73-2.11 1-2.4c.24-.27.53-.34.7-.34.18 0 .35 0 .5.01.16.01.38-.06.59.45.24.58.81 2 .88 2.15.07.15.12.32.02.52-.09.19-.14.31-.28.48-.14.17-.29.37-.42.5-.14.14-.28.29-.12.57.16.28.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.22 1.37.28.14.44.12.6-.07.16-.2.68-.79.87-1.06.18-.27.36-.22.6-.13.24.09 1.53.72 1.79.85.26.13.43.19.5.3.06.11.06.65-.18 1.33z"/></svg></a>
+        </div>
+      </div>
+
+      <div class="footer-nav">
+        <h4>Gyors Linkek</h4>
+        <ul class="footer-links">
+          <li><a href="#top">Kezdőlap</a></li>
+          <li><a href="#rolunk">Rólunk</a></li>
+          <li><a href="#szolgaltatasok">Szolgáltatások</a></li>
+          <li><a href="#velemenyek">Vélemények</a></li>
+          <li><a href="#csapat">Csapatunk</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-services">
+        <h4>Szolgáltatásaink</h4>
+        <ul class="footer-links">
+          <li><a href="#szolgaltatasok">Lakástakarítás</a></li>
+          <li><a href="#szolgaltatasok">Irodatakarítás</a></li>
+          <li><a href="#szolgaltatasok">Mélytakarítás</a></li>
+          <li><a href="#szolgaltatasok">Költözési Takarítás</a></li>
+          <li><a href="#szolgaltatasok">Ablaktisztítás</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-contact-wrap">
+        <h4>Kapcsolat</h4>
+        <ul class="footer-contact">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Váci út 42, 1133 Budapest</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <a href="tel:+3614452210">+36 1 445 2210</a>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l7.89 5.26a2 2 0 0 0 2.22 0L21 8M5 19h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2z"/></svg>
+            <a href="mailto:info@fenyestakaritas.hu">info@fenyestakaritas.hu</a>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>H–P: 8:00–18:00, Szo: 9:00–14:00</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 Fényes Takarítás. Minden jog fenntartva.</span>
+      <div class="footer-bottom-links">
+        <a href="#">Adatvédelmi Szabályzat</a>
+        <a href="#">Általános Szerződési Feltételek</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button class="back-to-top" id="backToTop" aria-label="Vissza a tetejére">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+</button>
+
+<script src="js/script.js"></script>
+</body>
+</html>
