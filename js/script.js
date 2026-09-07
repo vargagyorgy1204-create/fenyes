@@ -227,17 +227,6 @@
   }
 
   /* ---------------------------------------------------------
-     Play button (placeholder — no real video wired up)
-  --------------------------------------------------------- */
-  var playBtn = document.getElementById('playBtn');
-  if (playBtn) {
-    playBtn.addEventListener('click', function () {
-      playBtn.style.transform = 'scale(0.9)';
-      setTimeout(function () { playBtn.style.transform = ''; }, 150);
-    });
-  }
-
-  /* ---------------------------------------------------------
      Active nav link on scroll (scrollspy)
   --------------------------------------------------------- */
   var sections = ['top', 'rolunk', 'szolgaltatasok', 'velemenyek', 'csapat', 'kapcsolat']
@@ -274,5 +263,153 @@
 
     updateActiveSection();
   }
+
+  /* ---------------------------------------------------------
+     Lucide icons
+  --------------------------------------------------------- */
+  if (window.lucide && typeof window.lucide.createIcons === 'function') {
+    window.lucide.createIcons({ attrs: { 'stroke-width': 1.75 } });
+  }
+
+  /* ---------------------------------------------------------
+     Before / After comparison slider
+  --------------------------------------------------------- */
+  var baSlider = document.getElementById('baSlider');
+  var baBeforeImg = document.getElementById('baBeforeImg');
+  var baDivider = document.getElementById('baDivider');
+  var baHandle = document.getElementById('baHandle');
+
+  if (baSlider && baBeforeImg && baDivider && baHandle) {
+    var baDragging = false;
+
+    function baSetPosition(pct) {
+      pct = Math.min(100, Math.max(0, pct));
+      baBeforeImg.style.clipPath = 'inset(0 ' + (100 - pct) + '% 0 0)';
+      baDivider.style.left = pct + '%';
+      baHandle.setAttribute('aria-valuenow', Math.round(pct));
+    }
+
+    function baPercentFromClientX(clientX) {
+      var rect = baSlider.getBoundingClientRect();
+      return ((clientX - rect.left) / rect.width) * 100;
+    }
+
+    function baPointerMove(e) {
+      if (!baDragging) return;
+      var clientX = e.touches && e.touches.length ? e.touches[0].clientX : e.clientX;
+      baSetPosition(baPercentFromClientX(clientX));
+    }
+
+    function baStopDrag() {
+      if (!baDragging) return;
+      baDragging = false;
+      baSlider.classList.remove('dragging');
+      window.removeEventListener('pointermove', baPointerMove);
+      window.removeEventListener('pointerup', baStopDrag);
+    }
+
+    function baStartDrag(e) {
+      baDragging = true;
+      baSlider.classList.add('dragging');
+      window.addEventListener('pointermove', baPointerMove);
+      window.addEventListener('pointerup', baStopDrag);
+      var clientX = e.touches && e.touches.length ? e.touches[0].clientX : e.clientX;
+      if (typeof clientX === 'number') baSetPosition(baPercentFromClientX(clientX));
+      e.preventDefault();
+      baHandle.focus();
+    }
+
+    baHandle.addEventListener('pointerdown', baStartDrag);
+
+    // Allow grabbing anywhere on the slider, not just the handle
+    baSlider.addEventListener('pointerdown', function (e) {
+      if (baHandle.contains(e.target)) return;
+      baStartDrag(e);
+    });
+
+    baHandle.addEventListener('keydown', function (e) {
+      var current = parseFloat(baHandle.getAttribute('aria-valuenow')) || 50;
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') {
+        baSetPosition(current - 5);
+        e.preventDefault();
+      } else if (e.key === 'ArrowRight' || e.key === 'ArrowUp') {
+        baSetPosition(current + 5);
+        e.preventDefault();
+      } else if (e.key === 'Home') {
+        baSetPosition(0);
+        e.preventDefault();
+      } else if (e.key === 'End') {
+        baSetPosition(100);
+        e.preventDefault();
+      }
+    });
+
+    baSetPosition(50);
+  }
+
+  /* ---------------------------------------------------------
+     Sticky split panel (Services + Process)
+     Left panel content follows whichever row is centered in
+     the viewport, tracked with IntersectionObserver — no
+     scroll-position math, no easing/physics.
+  --------------------------------------------------------- */
+  function initStickyPanel(section) {
+    if (!section) return;
+    var rows = Array.prototype.slice.call(section.querySelectorAll('.sticky-row'));
+    var panel = section.querySelector('.sticky-panel-inner');
+    if (!rows.length || !panel) return;
+
+    var badge = panel.querySelector('.sticky-badge');
+    var numEl = panel.querySelector('.sticky-num');
+    var titleEl = panel.querySelector('.sticky-title');
+    var currentRow = null;
+    var fadeTimer = null;
+
+    function applyContent(row) {
+      var iconName = row.getAttribute('data-icon');
+      badge.innerHTML = '<i data-lucide="' + iconName + '" class="icon icon--lg"></i>';
+      numEl.textContent = row.getAttribute('data-num');
+      titleEl.textContent = row.getAttribute('data-title');
+      if (window.lucide && typeof window.lucide.createIcons === 'function') {
+        window.lucide.createIcons({ attrs: { 'stroke-width': 1.75 } });
+      }
+    }
+
+    function setActive(row) {
+      if (row === currentRow) return;
+      currentRow = row;
+      rows.forEach(function (r) { r.classList.toggle('is-active', r === row); });
+
+      if (reduceMotion) {
+        applyContent(row);
+        return;
+      }
+
+      panel.classList.add('is-fading');
+      clearTimeout(fadeTimer);
+      fadeTimer = setTimeout(function () {
+        applyContent(row);
+        panel.classList.remove('is-fading');
+      }, 160);
+    }
+
+    // Reduced motion: static two-column layout, content fixed to the
+    // first row — no IntersectionObserver, no scroll-tracking.
+    if (reduceMotion || !('IntersectionObserver' in window)) {
+      setActive(rows[0]);
+      return;
+    }
+
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) setActive(entry.target);
+      });
+    }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
+
+    rows.forEach(function (row) { io.observe(row); });
+  }
+
+  initStickyPanel(document.getElementById('servicesSticky'));
+  initStickyPanel(document.getElementById('processSticky'));
 
 })();
