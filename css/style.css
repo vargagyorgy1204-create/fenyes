@@ -817,30 +817,6 @@ section { position: relative; }
   clip-path: inset(0 50% 0 0);
 }
 
-.ba-placeholder {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  text-align: center;
-  padding: 24px;
-}
-
-.ba-placeholder svg { width: 40px; height: 40px; }
-
-.ba-placeholder span {
-  font-family: var(--font-heading);
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.03em;
-}
-
-.ba-img--before .ba-placeholder { background: #DCE3EC; color: #5B6B85; }
-.ba-img--after .ba-placeholder { background: var(--color-green-light); color: var(--color-green-dark); }
-
 .ba-tag {
   position: absolute;
   top: 16px;
