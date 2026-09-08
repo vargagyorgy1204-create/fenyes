@@ -684,33 +684,33 @@ section { position: relative; }
    (hero-float-*-wide) so .cta-blob (base .hero-blob + hero-float-1/2/3,
    unchanged below) isn't affected. */
 .hero-blob--1 {
-  width: 550px;
-  height: 550px;
+  width: 825px;
+  height: 825px;
   background: radial-gradient(circle, var(--color-accent-glow), transparent 70%);
-  top: -10%;
+  top: -5%;
   left: 5%;
   opacity: 0.6;
-  filter: blur(45px);
+  filter: blur(35px);
   animation: hero-float-1-wide 18s ease-in-out infinite;
 }
 .hero-blob--2 {
-  width: 420px;
-  height: 420px;
+  width: 630px;
+  height: 630px;
   background: radial-gradient(circle, var(--color-accent), transparent 70%);
-  bottom: -15%;
+  bottom: -8%;
   right: 10%;
   opacity: 0.6;
-  filter: blur(45px);
+  filter: blur(35px);
   animation: hero-float-2-wide 22s ease-in-out infinite;
 }
 .hero-blob--3 {
-  width: 340px;
-  height: 340px;
+  width: 510px;
+  height: 510px;
   background: radial-gradient(circle, var(--color-warm, var(--color-accent-dark)), transparent 70%);
-  top: 30%;
-  right: 30%;
+  top: 25%;
+  right: 25%;
   opacity: 0.6;
-  filter: blur(45px);
+  filter: blur(35px);
   animation: hero-float-3-wide 26s ease-in-out infinite;
 }
 
@@ -884,28 +884,70 @@ section { position: relative; }
   user-select: none;
 }
 
-/* Each row gets a generous, equal share of scroll distance so the sticky
-   card stays pinned for a deliberate stretch per step (see script.js). */
+/* Each row is an INVISIBLE scroll slot with a generous, equal share of
+   scroll distance, so the sticky card stays pinned for a deliberate
+   stretch per step (see script.js) — .process-row itself carries no
+   border/background/padding. The visible, content-hugging card is the
+   nested .process-row-card (reuses .sticky-row's border/padding/
+   is-active styling; the class lives on this inner element instead so
+   scripts.js's `.sticky-row` query already finds the right node). */
 .process-row {
   min-height: 80vh;
   display: flex;
   align-items: center;
 }
 
-.process-row-icon-wrap { position: relative; flex-shrink: 0; }
+.process-row-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  width: 100%;
+}
 
+/* Ghost step numeral in the card's back corner (mirrors the main dark
+   card's treatment, smaller) — top-right, behind the description text,
+   clear of the icon in the opposite corner so nothing overlaps. */
 .process-row-num {
   position: absolute;
-  top: -12px;
-  right: -16px;
+  z-index: -1;
+  top: -0.1em;
+  right: 0.08em;
   font-family: var(--font-heading);
   font-weight: 700;
-  font-size: 2rem;
-  color: var(--color-accent);
-  opacity: 0.18;
+  font-size: 3.5rem;
   line-height: 1;
+  color: var(--color-accent);
+  opacity: 0.14;
   pointer-events: none;
   user-select: none;
+}
+
+/* Soft step transition for the main dark card's icon/number/title.
+   Two-phase: fade+slide the old content up and out (.is-leaving, 0.2s),
+   then — after the JS swaps the text/icon — fade+slide the new content
+   in from below (.is-entering starts the frame, removing it plays the
+   0.28s transition back to rest). Opacity + translate only, so it stays
+   on the compositor. */
+.process-fade {
+  display: flex;
+  flex-direction: column;
+  transition: opacity 0.28s var(--ease), translate 0.28s var(--ease);
+}
+.process-fade.is-leaving {
+  transition: opacity 0.2s var(--ease), translate 0.2s var(--ease);
+  opacity: 0;
+  translate: 0 -8px;
+}
+.process-fade.is-entering {
+  transition: none;
+  opacity: 0;
+  translate: 0 8px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .process-fade { transition: none; }
+  .process-fade.is-leaving,
+  .process-fade.is-entering { opacity: 1; translate: 0 0; }
 }
 
 @media (max-width: 900px) {
@@ -1237,20 +1279,29 @@ section { position: relative; }
 /* Content sits above the animated .cta-blob background layer */
 .cta-banner > div:not(.hero-blob) { position: relative; z-index: 1; }
 
+/* Sized to the card's own rendered height (~190-200px on desktop, where
+   the card is a single row of heading+buttons) rather than copied from
+   Hero — those were 2-3x taller than the card itself and mostly clipped
+   outside it by overflow:hidden. Small positive offsets keep the bulk
+   of each circle inside the visible card instead of past its edge. */
 .cta-blob--1 {
-  width: 260px;
-  height: 260px;
+  width: 130px;
+  height: 130px;
   background: radial-gradient(circle, var(--color-accent-glow), transparent 70%);
-  top: -20%;
-  right: 5%;
+  top: -10px;
+  right: 6%;
+  opacity: 0.55;
+  filter: blur(25px);
   animation: hero-float-1 18s ease-in-out infinite;
 }
 .cta-blob--2 {
-  width: 200px;
-  height: 200px;
+  width: 110px;
+  height: 110px;
   background: radial-gradient(circle, var(--color-warm, var(--color-accent)), transparent 70%);
-  bottom: -25%;
-  right: 25%;
+  bottom: -10px;
+  right: 28%;
+  opacity: 0.55;
+  filter: blur(25px);
   animation: hero-float-2 22s ease-in-out infinite;
 }
 

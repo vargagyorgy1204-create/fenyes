@@ -436,9 +436,10 @@
     ? Array.prototype.slice.call(processSection.querySelectorAll('.sticky-row'))
     : [];
   var processPanel = processSection ? processSection.querySelector('.sticky-panel-inner') : null;
-  var processBadge = processPanel ? processPanel.querySelector('.sticky-badge') : null;
-  var processNumEl = processPanel ? processPanel.querySelector('.sticky-num') : null;
-  var processTitleEl = processPanel ? processPanel.querySelector('.sticky-title') : null;
+  var processContent = processPanel ? processPanel.querySelector('.process-fade') : null;
+  var processBadge = processContent ? processContent.querySelector('.sticky-badge') : null;
+  var processNumEl = processContent ? processContent.querySelector('.sticky-num') : null;
+  var processTitleEl = processContent ? processContent.querySelector('.sticky-title') : null;
   var processBgNumEl = processPanel ? processPanel.querySelector('.sticky-bg-num') : null;
   var processCurrentIndex = -1;
   var processFadeTimer = null;
@@ -456,22 +457,34 @@
     }
   }
 
+  // Soft two-phase transition: slide+fade the old content up and out,
+  // swap the text/icon once it's gone, then slide+fade the new content
+  // in from below. Opacity + translate only (compositor-friendly).
   function setProcessStep(index) {
     if (index === processCurrentIndex) return;
     processCurrentIndex = index;
     processRows.forEach(function (r, i) { r.classList.toggle('is-active', i === index); });
 
-    if (reduceMotion) {
+    if (reduceMotion || !processContent) {
       applyProcessStep(index);
       return;
     }
 
-    processPanel.classList.add('is-fading');
     clearTimeout(processFadeTimer);
+    processContent.classList.remove('is-entering');
+    processContent.classList.add('is-leaving');
+
     processFadeTimer = setTimeout(function () {
       applyProcessStep(index);
-      processPanel.classList.remove('is-fading');
-    }, 160);
+      processContent.classList.remove('is-leaving');
+      processContent.classList.add('is-entering');
+      // Force a reflow so the "entering" starting position (translated
+      // down, transparent) is actually painted before we remove the
+      // class — otherwise both class changes would be batched into one
+      // frame and no transition would play.
+      void processContent.offsetWidth;
+      processContent.classList.remove('is-entering');
+    }, 200);
   }
 
   function updateProcessProgress() {
