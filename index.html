@@ -28,9 +28,21 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;color:var(--color-accent);display:inline-block;vertical-align:-3px;margin-right:6px;"><path d="M3 8l7.89 5.26a2 2 0 0 0 2.22 0L21 8M5 19h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2z"/></svg>
         info@fenyestakaritas.hu
       </span>
-      <span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;color:var(--color-accent);display:inline-block;vertical-align:-3px;margin-right:6px;"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        Budapest, Váci út 42.
+      <span class="topbar-locations">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;color:var(--color-accent);display:inline-block;vertical-align:-3px;margin-right:6px;flex-shrink:0;"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>Budapest, Váci út 42.</span>
+        <span class="topbar-locations-extra">
+          <span class="topbar-locations-sep" aria-hidden="true">·</span>
+          <span>Debrecen, Piac utca 24.</span>
+        </span>
+        <span class="topbar-locations-extra">
+          <span class="topbar-locations-sep" aria-hidden="true">·</span>
+          <span>Szeged, Kárász utca 8.</span>
+        </span>
+        <span class="topbar-locations-extra">
+          <span class="topbar-locations-sep" aria-hidden="true">·</span>
+          <span>Pécs, Király utca 15.</span>
+        </span>
       </span>
     </div>
     <div class="topbar-social">
@@ -68,7 +80,7 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           +36 1 445 2210
         </a>
-        <a href="#kapcsolat" class="btn btn-primary">Ingyenes Árajánlat</a>
+        <a href="#kapcsolat" class="btn btn-primary">Ügyfélszolgálat</a>
       </li>
     </ul>
 
@@ -78,11 +90,11 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
         </span>
         <span class="nav-phone-text">
-          <small>Hívjon minket</small>
+          <small>Központi iroda</small>
           <strong>+36 1 445 2210</strong>
         </span>
       </div>
-      <a href="#kapcsolat" class="btn btn-primary">Ingyenes Árajánlat</a>
+      <a href="#kapcsolat" class="btn btn-primary">Ügyfélszolgálat</a>
     </div>
   </nav>
 </header>
@@ -103,18 +115,17 @@
       <p class="hero-text">Precíz, megbízható és környezetbarát takarítási szolgáltatások otthonok és irodák számára. Tapasztalt szakembereink gondoskodnak róla, hogy tere makulátlanul ragyogjon — minden alkalommal.</p>
 
       <div class="hero-actions">
-        <a href="#kapcsolat" class="btn btn-primary">
-          Ingyenes Árajánlat
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </a>
+        <a href="#kapcsolat" class="btn btn-primary">Ingyenes Árajánlat</a>
         <a href="#szolgaltatasok" class="btn btn-outline-light">Szolgáltatásaink</a>
       </div>
 
       <div class="hero-proof">
         <div class="avatar-stack">
-          <img src="images/testimonial-1.jpg" alt="Elégedett ügyfél" loading="lazy">
-          <img src="images/testimonial-2.jpg" alt="Elégedett ügyfél" loading="lazy">
-          <img src="images/testimonial-3.jpg" alt="Elégedett ügyfél" loading="lazy">
+          <img src="images/avatar-1.jpg" alt="Elégedett ügyfél" loading="lazy">
+          <img src="images/avatar-2.jpg" alt="Elégedett ügyfél" loading="lazy">
+          <img src="images/avatar-3.jpg" alt="Elégedett ügyfél" loading="lazy">
+          <img src="images/avatar-4.jpg" alt="Elégedett ügyfél" loading="lazy">
+          <img src="images/avatar-5.jpg" alt="Elégedett ügyfél" loading="lazy">
         </div>
         <div class="hero-proof-text">
           <span class="stars">
@@ -125,7 +136,6 @@
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
           </span>
           <strong>1200+ Elégedett Ügyfél</strong>
-          <span>Bízza ránk otthona tisztaságát</span>
         </div>
       </div>
     </div>
