@@ -1151,16 +1151,25 @@ section { position: relative; }
   isolation: isolate;
 }
 
-.cta-banner::before,
-.cta-banner::after {
-  content: '';
-  position: absolute;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.09);
-  z-index: -1;
+/* Content sits above the animated .cta-blob background layer */
+.cta-banner > div:not(.hero-blob) { position: relative; z-index: 1; }
+
+.cta-blob--1 {
+  width: 260px;
+  height: 260px;
+  background: radial-gradient(circle, var(--color-accent-glow), transparent 70%);
+  top: -20%;
+  right: 5%;
+  animation: hero-float-1 18s ease-in-out infinite;
 }
-.cta-banner::before { width: 280px; height: 280px; top: -140px; right: 10%; }
-.cta-banner::after { width: 180px; height: 180px; bottom: -100px; right: 28%; }
+.cta-blob--2 {
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, var(--color-warm, var(--color-accent)), transparent 70%);
+  bottom: -25%;
+  right: 25%;
+  animation: hero-float-2 22s ease-in-out infinite;
+}
 
 .cta-banner h2 { color: #fff; font-size: clamp(24px, 2.8vw, 32px); max-width: 480px; }
 .cta-banner p { color: rgba(255,255,255,0.85); margin-top: 12px; font-size: 15.5px; }
