@@ -596,7 +596,7 @@ section { position: relative; }
   position: relative;
   border-radius: var(--radius-lg);
   overflow: hidden;
-  aspect-ratio: 4 / 4.6;
+  aspect-ratio: 4 / 5.04;
   box-shadow: var(--shadow-lg);
 }
 .hero-photo-frame img { width: 100%; height: 100%; object-fit: cover; }
