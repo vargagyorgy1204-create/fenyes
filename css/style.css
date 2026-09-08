@@ -679,29 +679,39 @@ section { position: relative; }
   pointer-events: none;
   will-change: transform;
 }
+/* Hero blobs are more prominent than the CTA banner's — bigger, brighter,
+   less blurred and with a wider drift range. Own opacity/filter/keyframes
+   (hero-float-*-wide) so .cta-blob (base .hero-blob + hero-float-1/2/3,
+   unchanged below) isn't affected. */
 .hero-blob--1 {
-  width: 420px;
-  height: 420px;
+  width: 550px;
+  height: 550px;
   background: radial-gradient(circle, var(--color-accent-glow), transparent 70%);
   top: -10%;
   left: 5%;
-  animation: hero-float-1 18s ease-in-out infinite;
+  opacity: 0.6;
+  filter: blur(45px);
+  animation: hero-float-1-wide 18s ease-in-out infinite;
 }
 .hero-blob--2 {
-  width: 320px;
-  height: 320px;
+  width: 420px;
+  height: 420px;
   background: radial-gradient(circle, var(--color-accent), transparent 70%);
   bottom: -15%;
   right: 10%;
-  animation: hero-float-2 22s ease-in-out infinite;
+  opacity: 0.6;
+  filter: blur(45px);
+  animation: hero-float-2-wide 22s ease-in-out infinite;
 }
 .hero-blob--3 {
-  width: 260px;
-  height: 260px;
+  width: 340px;
+  height: 340px;
   background: radial-gradient(circle, var(--color-warm, var(--color-accent-dark)), transparent 70%);
   top: 30%;
   right: 30%;
-  animation: hero-float-3 26s ease-in-out infinite;
+  opacity: 0.6;
+  filter: blur(45px);
+  animation: hero-float-3-wide 26s ease-in-out infinite;
 }
 
 @keyframes hero-float-1 {
@@ -715,6 +725,19 @@ section { position: relative; }
 @keyframes hero-float-3 {
   0%, 100% { translate: 0 0; scale: 1; }
   50% { translate: 25px -25px; scale: 0.95; }
+}
+
+@keyframes hero-float-1-wide {
+  0%, 100% { translate: 0 0; scale: 1; }
+  50% { translate: 70px 55px; scale: 1.08; }
+}
+@keyframes hero-float-2-wide {
+  0%, 100% { translate: 0 0; scale: 1; }
+  50% { translate: -50px -70px; scale: 1.05; }
+}
+@keyframes hero-float-3-wide {
+  0%, 100% { translate: 0 0; scale: 1; }
+  50% { translate: 45px -45px; scale: 0.95; }
 }
 
 @media (prefers-reduced-motion: reduce) {
