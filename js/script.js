@@ -37,6 +37,8 @@
         el.style.transform = 'translateY(' + (centerOffset * factor * -1) + 'px)';
       });
     }
+
+    updateProcessProgress();
   }
 
   function onScroll() {
@@ -348,10 +350,13 @@
   }
 
   /* ---------------------------------------------------------
-     Sticky split panel (Services + Process)
+     Sticky split panel (Services)
      Left panel content follows whichever row is centered in
      the viewport, tracked with IntersectionObserver — no
      scroll-position math, no easing/physics.
+     (Process uses its own scroll-progress version below —
+     IntersectionObserver-per-row desynced from when the panel
+     actually pins, so it gets a dedicated implementation.)
   --------------------------------------------------------- */
   function initStickyPanel(section) {
     if (!section) return;
@@ -410,6 +415,90 @@
   }
 
   initStickyPanel(document.getElementById('servicesSticky'));
-  initStickyPanel(document.getElementById('processSticky'));
+
+  /* ---------------------------------------------------------
+     Process section — scroll-progress-driven sticky panel.
+
+     The old per-row IntersectionObserver advanced the active
+     step as soon as a row neared the viewport centre, which
+     could fire before the panel had even finished becoming
+     sticky — the highlight raced ahead of the pin. Instead:
+     each .process-row is a tall (80vh) scroll slot (see CSS),
+     making #processSticky itself roughly steps*80vh tall. The
+     panel pins naturally via CSS `position: sticky` inside
+     that tall track; we only compute *which step* is active,
+     as a 0-1 scroll fraction through the track mapped onto
+     the step count. Runs inside the shared rAF scroll loop
+     above — no separate scroll listener.
+  --------------------------------------------------------- */
+  var processSection = document.getElementById('processSticky');
+  var processRows = processSection
+    ? Array.prototype.slice.call(processSection.querySelectorAll('.sticky-row'))
+    : [];
+  var processPanel = processSection ? processSection.querySelector('.sticky-panel-inner') : null;
+  var processBadge = processPanel ? processPanel.querySelector('.sticky-badge') : null;
+  var processNumEl = processPanel ? processPanel.querySelector('.sticky-num') : null;
+  var processTitleEl = processPanel ? processPanel.querySelector('.sticky-title') : null;
+  var processBgNumEl = processPanel ? processPanel.querySelector('.sticky-bg-num') : null;
+  var processCurrentIndex = -1;
+  var processFadeTimer = null;
+
+  function applyProcessStep(index) {
+    var row = processRows[index];
+    if (!row) return;
+    var iconName = row.getAttribute('data-icon');
+    processBadge.innerHTML = '<i data-lucide="' + iconName + '" class="icon icon--lg"></i>';
+    processNumEl.textContent = row.getAttribute('data-num');
+    processTitleEl.textContent = row.getAttribute('data-title');
+    if (processBgNumEl) processBgNumEl.textContent = row.getAttribute('data-num');
+    if (window.lucide && typeof window.lucide.createIcons === 'function') {
+      window.lucide.createIcons({ attrs: { 'stroke-width': 1.75 } });
+    }
+  }
+
+  function setProcessStep(index) {
+    if (index === processCurrentIndex) return;
+    processCurrentIndex = index;
+    processRows.forEach(function (r, i) { r.classList.toggle('is-active', i === index); });
+
+    if (reduceMotion) {
+      applyProcessStep(index);
+      return;
+    }
+
+    processPanel.classList.add('is-fading');
+    clearTimeout(processFadeTimer);
+    processFadeTimer = setTimeout(function () {
+      applyProcessStep(index);
+      processPanel.classList.remove('is-fading');
+    }, 160);
+  }
+
+  function updateProcessProgress() {
+    if (!processSection || !processPanel || !processRows.length || reduceMotion) return;
+
+    var y = window.scrollY || document.documentElement.scrollTop;
+    var rect = processSection.getBoundingClientRect();
+    var sectionTop = rect.top + y;
+    var scrollable = processSection.offsetHeight - window.innerHeight;
+    var progress = scrollable > 0 ? (y - sectionTop) / scrollable : 0;
+    progress = Math.min(1, Math.max(0, progress));
+
+    var index = Math.floor(progress * processRows.length);
+    if (index >= processRows.length) index = processRows.length - 1;
+    if (index < 0) index = 0;
+
+    setProcessStep(index);
+  }
+
+  if (processSection && processPanel && processRows.length) {
+    // Reduced motion: lock to step 1, matching the static two-column
+    // fallback layout — no rAF-driven progress tracking needed.
+    if (reduceMotion) {
+      setProcessStep(0);
+    } else {
+      updateProcessProgress();
+    }
+  }
 
 })();

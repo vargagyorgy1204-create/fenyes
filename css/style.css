@@ -831,6 +831,66 @@ section { position: relative; }
   .sticky-panel-inner { min-height: 0; }
 }
 
+/* ==========================================================================
+   Process section — scoped overrides on top of the shared sticky-split
+   pattern above (Services keeps the shared defaults untouched)
+   ========================================================================== */
+
+/* Oversized low-opacity step numeral in a back corner of the dark card.
+   isolation:isolate + negative z-index keeps it behind the badge/title
+   text while still painting above the card's own navy background. */
+#processSticky .sticky-panel-inner {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 64px 24px 44px;
+}
+
+.sticky-bg-num {
+  position: absolute;
+  z-index: -1;
+  top: -0.12em;
+  right: 0.02em;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 9rem;
+  line-height: 1;
+  color: #fff;
+  opacity: 0.1;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Each row gets a generous, equal share of scroll distance so the sticky
+   card stays pinned for a deliberate stretch per step (see script.js). */
+.process-row {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+}
+
+.process-row-icon-wrap { position: relative; flex-shrink: 0; }
+
+.process-row-num {
+  position: absolute;
+  top: -12px;
+  right: -16px;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 2rem;
+  color: var(--color-accent);
+  opacity: 0.18;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+@media (max-width: 900px) {
+  /* Sticky panel is static below 900px (see rule above) — a tall
+     scroll track no longer serves a purpose, so drop it. */
+  .process-row { min-height: 0; }
+}
+
 /* Reduced motion: plain static two-column layout, no sticky, no scroll-tracking fade */
 @media (prefers-reduced-motion: reduce) {
   .sticky-panel { position: static; }
