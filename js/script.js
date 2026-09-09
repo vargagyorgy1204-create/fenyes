@@ -38,7 +38,8 @@
       });
     }
 
-    updateProcessProgress();
+    updateServicesStep();
+    updateProcessStep();
   }
 
   function onScroll() {
@@ -48,7 +49,9 @@
     }
   }
   document.addEventListener('scroll', onScroll, { passive: true });
-  updateOnScroll();
+  // Initial sync happens at the very end of this file, after the
+  // step-scroller sections below are set up (updateOnScroll calls into
+  // them, and they need to exist first).
 
   if (backToTop) {
     backToTop.addEventListener('click', function () {
@@ -350,168 +353,110 @@
   }
 
   /* ---------------------------------------------------------
-     Sticky split panel (Services)
-     Left panel content follows whichever row is centered in
-     the viewport, tracked with IntersectionObserver — no
-     scroll-position math, no easing/physics.
-     (Process uses its own scroll-progress version below —
-     IntersectionObserver-per-row desynced from when the panel
-     actually pins, so it gets a dedicated implementation.)
-  --------------------------------------------------------- */
-  function initStickyPanel(section) {
-    if (!section) return;
-    var rows = Array.prototype.slice.call(section.querySelectorAll('.sticky-row'));
-    var panel = section.querySelector('.sticky-panel-inner');
-    if (!rows.length || !panel) return;
+     Scroll-progress-driven sticky panel (Services + Process).
 
-    var badge = panel.querySelector('.sticky-badge');
-    var numEl = panel.querySelector('.sticky-num');
-    var titleEl = panel.querySelector('.sticky-title');
-    var currentRow = null;
+     A per-row IntersectionObserver (the original approach) can
+     advance the active step as soon as a row nears the viewport
+     centre — which can fire before the panel has even finished
+     becoming sticky, so the highlight races ahead of the pin.
+     Instead: each .sticky-row's outer .process-row is a tall
+     (80vh) scroll slot (see CSS), making the section itself
+     roughly steps*80vh tall. The panel pins naturally via CSS
+     `position: sticky` inside that tall track; this only
+     computes *which step* is active, as a 0-1 scroll fraction
+     through the section mapped onto the row count.
+
+     Returns an `update` function to be called from the shared
+     rAF scroll loop above (no per-section scroll listener) — a
+     no-op if the section/panel/rows aren't found.
+  --------------------------------------------------------- */
+  function createStepScroller(sectionId) {
+    var section = document.getElementById(sectionId);
+    var rows = section ? Array.prototype.slice.call(section.querySelectorAll('.sticky-row')) : [];
+    var panel = section ? section.querySelector('.sticky-panel-inner') : null;
+    var content = panel ? panel.querySelector('.process-fade') : null;
+    var badge = content ? content.querySelector('.sticky-badge') : null;
+    var numEl = content ? content.querySelector('.sticky-num') : null;
+    var titleEl = content ? content.querySelector('.sticky-title') : null;
+    var bgNumEl = panel ? panel.querySelector('.sticky-bg-num') : null;
+    var currentIndex = -1;
     var fadeTimer = null;
 
-    function applyContent(row) {
+    if (!section || !panel || !rows.length) return function () {};
+
+    function applyStep(index) {
+      var row = rows[index];
+      if (!row) return;
       var iconName = row.getAttribute('data-icon');
       badge.innerHTML = '<i data-lucide="' + iconName + '" class="icon icon--lg"></i>';
       numEl.textContent = row.getAttribute('data-num');
       titleEl.textContent = row.getAttribute('data-title');
+      if (bgNumEl) bgNumEl.textContent = row.getAttribute('data-num');
       if (window.lucide && typeof window.lucide.createIcons === 'function') {
         window.lucide.createIcons({ attrs: { 'stroke-width': 1.75 } });
       }
     }
 
-    function setActive(row) {
-      if (row === currentRow) return;
-      currentRow = row;
-      rows.forEach(function (r) { r.classList.toggle('is-active', r === row); });
+    // Soft two-phase transition: slide+fade the old content up and out,
+    // swap the text/icon once it's gone, then slide+fade the new
+    // content in from below. Opacity + translate only (compositor-
+    // friendly), driven by toggling classes — see CSS for the timing.
+    function setStep(index) {
+      if (index === currentIndex) return;
+      currentIndex = index;
+      rows.forEach(function (r, i) { r.classList.toggle('is-active', i === index); });
 
-      if (reduceMotion) {
-        applyContent(row);
+      if (reduceMotion || !content) {
+        applyStep(index);
         return;
       }
 
-      panel.classList.add('is-fading');
       clearTimeout(fadeTimer);
+      content.classList.remove('is-entering');
+      content.classList.add('is-leaving');
+
       fadeTimer = setTimeout(function () {
-        applyContent(row);
-        panel.classList.remove('is-fading');
-      }, 160);
+        applyStep(index);
+        content.classList.remove('is-leaving');
+        content.classList.add('is-entering');
+        // Force a reflow so the "entering" starting position (translated
+        // down, transparent) is actually painted before we remove the
+        // class — otherwise both class changes would batch into one
+        // frame and no transition would play.
+        void content.offsetWidth;
+        content.classList.remove('is-entering');
+      }, 200);
     }
 
-    // Reduced motion: static two-column layout, content fixed to the
-    // first row — no IntersectionObserver, no scroll-tracking.
-    if (reduceMotion || !('IntersectionObserver' in window)) {
-      setActive(rows[0]);
-      return;
+    function update() {
+      if (reduceMotion) return;
+
+      var y = window.scrollY || document.documentElement.scrollTop;
+      var rect = section.getBoundingClientRect();
+      var sectionTop = rect.top + y;
+      var scrollable = section.offsetHeight - window.innerHeight;
+      var progress = scrollable > 0 ? (y - sectionTop) / scrollable : 0;
+      progress = Math.min(1, Math.max(0, progress));
+
+      var index = Math.floor(progress * rows.length);
+      if (index >= rows.length) index = rows.length - 1;
+      if (index < 0) index = 0;
+
+      setStep(index);
     }
 
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) setActive(entry.target);
-      });
-    }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
-
-    rows.forEach(function (row) { io.observe(row); });
-  }
-
-  initStickyPanel(document.getElementById('servicesSticky'));
-
-  /* ---------------------------------------------------------
-     Process section — scroll-progress-driven sticky panel.
-
-     The old per-row IntersectionObserver advanced the active
-     step as soon as a row neared the viewport centre, which
-     could fire before the panel had even finished becoming
-     sticky — the highlight raced ahead of the pin. Instead:
-     each .process-row is a tall (80vh) scroll slot (see CSS),
-     making #processSticky itself roughly steps*80vh tall. The
-     panel pins naturally via CSS `position: sticky` inside
-     that tall track; we only compute *which step* is active,
-     as a 0-1 scroll fraction through the track mapped onto
-     the step count. Runs inside the shared rAF scroll loop
-     above — no separate scroll listener.
-  --------------------------------------------------------- */
-  var processSection = document.getElementById('processSticky');
-  var processRows = processSection
-    ? Array.prototype.slice.call(processSection.querySelectorAll('.sticky-row'))
-    : [];
-  var processPanel = processSection ? processSection.querySelector('.sticky-panel-inner') : null;
-  var processContent = processPanel ? processPanel.querySelector('.process-fade') : null;
-  var processBadge = processContent ? processContent.querySelector('.sticky-badge') : null;
-  var processNumEl = processContent ? processContent.querySelector('.sticky-num') : null;
-  var processTitleEl = processContent ? processContent.querySelector('.sticky-title') : null;
-  var processBgNumEl = processPanel ? processPanel.querySelector('.sticky-bg-num') : null;
-  var processCurrentIndex = -1;
-  var processFadeTimer = null;
-
-  function applyProcessStep(index) {
-    var row = processRows[index];
-    if (!row) return;
-    var iconName = row.getAttribute('data-icon');
-    processBadge.innerHTML = '<i data-lucide="' + iconName + '" class="icon icon--lg"></i>';
-    processNumEl.textContent = row.getAttribute('data-num');
-    processTitleEl.textContent = row.getAttribute('data-title');
-    if (processBgNumEl) processBgNumEl.textContent = row.getAttribute('data-num');
-    if (window.lucide && typeof window.lucide.createIcons === 'function') {
-      window.lucide.createIcons({ attrs: { 'stroke-width': 1.75 } });
-    }
-  }
-
-  // Soft two-phase transition: slide+fade the old content up and out,
-  // swap the text/icon once it's gone, then slide+fade the new content
-  // in from below. Opacity + translate only (compositor-friendly).
-  function setProcessStep(index) {
-    if (index === processCurrentIndex) return;
-    processCurrentIndex = index;
-    processRows.forEach(function (r, i) { r.classList.toggle('is-active', i === index); });
-
-    if (reduceMotion || !processContent) {
-      applyProcessStep(index);
-      return;
-    }
-
-    clearTimeout(processFadeTimer);
-    processContent.classList.remove('is-entering');
-    processContent.classList.add('is-leaving');
-
-    processFadeTimer = setTimeout(function () {
-      applyProcessStep(index);
-      processContent.classList.remove('is-leaving');
-      processContent.classList.add('is-entering');
-      // Force a reflow so the "entering" starting position (translated
-      // down, transparent) is actually painted before we remove the
-      // class — otherwise both class changes would be batched into one
-      // frame and no transition would play.
-      void processContent.offsetWidth;
-      processContent.classList.remove('is-entering');
-    }, 200);
-  }
-
-  function updateProcessProgress() {
-    if (!processSection || !processPanel || !processRows.length || reduceMotion) return;
-
-    var y = window.scrollY || document.documentElement.scrollTop;
-    var rect = processSection.getBoundingClientRect();
-    var sectionTop = rect.top + y;
-    var scrollable = processSection.offsetHeight - window.innerHeight;
-    var progress = scrollable > 0 ? (y - sectionTop) / scrollable : 0;
-    progress = Math.min(1, Math.max(0, progress));
-
-    var index = Math.floor(progress * processRows.length);
-    if (index >= processRows.length) index = processRows.length - 1;
-    if (index < 0) index = 0;
-
-    setProcessStep(index);
-  }
-
-  if (processSection && processPanel && processRows.length) {
     // Reduced motion: lock to step 1, matching the static two-column
     // fallback layout — no rAF-driven progress tracking needed.
-    if (reduceMotion) {
-      setProcessStep(0);
-    } else {
-      updateProcessProgress();
-    }
+    if (reduceMotion) setStep(0);
+
+    return update;
   }
+
+  var updateServicesStep = createStepScroller('servicesSticky');
+  var updateProcessStep = createStepScroller('processSticky');
+
+  // Now that the step-scrollers above exist, run the initial sync for
+  // header/back-to-top/progress-bar/parallax/step-scrollers all at once.
+  updateOnScroll();
 
 })();

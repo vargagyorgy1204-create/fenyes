@@ -518,7 +518,7 @@ section { position: relative; }
    ========================================================================== */
 
 .hero {
-  padding: 68px 0 60px;
+  padding: 53px 0 60px;
   overflow: hidden;
   background: var(--color-dark);
 }
@@ -530,6 +530,12 @@ section { position: relative; }
   grid-template-columns: 1.05fr 0.95fr;
   gap: 56px;
   align-items: start;
+}
+
+.hero-content {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
 }
 
 .hero-eyebrow {
@@ -576,7 +582,8 @@ section { position: relative; }
   display: flex;
   align-items: center;
   gap: 14px;
-  margin-top: 42px;
+  margin-top: auto;
+  padding-top: 42px;
 }
 
 .avatar-stack { display: flex; }
@@ -780,18 +787,19 @@ section { position: relative; }
 .sticky-panel { position: sticky; top: 96px; }
 
 .sticky-panel-inner {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   background: var(--color-navy);
   color: #fff;
   border-radius: var(--radius-lg);
-  padding: 44px 36px;
+  padding: 64px 24px 44px;
   min-height: 260px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   box-shadow: var(--shadow-lg);
-  transition: opacity 0.18s var(--ease);
 }
-.sticky-panel-inner.is-fading { opacity: 0.25; }
 
 .sticky-badge {
   width: 64px; height: 64px;
@@ -848,7 +856,6 @@ section { position: relative; }
 .sticky-row.is-active .sticky-row-icon { background: var(--color-accent); color: #fff; }
 .sticky-row-icon .icon { width: 22px; height: 22px; }
 
-.sticky-row h3 { font-size: 18px; margin-bottom: 6px; }
 .sticky-row p { font-size: 14.5px; }
 
 .services-cta { text-align: center; margin-top: 48px; }
@@ -860,20 +867,14 @@ section { position: relative; }
 }
 
 /* ==========================================================================
-   Process section — scoped overrides on top of the shared sticky-split
-   pattern above (Services keeps the shared defaults untouched)
+   Sticky step-row treatment — shared by Services and Process, the two
+   sections using the .sticky-split pattern (background numeral, the
+   content-hugging row cards, and the soft step transition below)
    ========================================================================== */
 
 /* Oversized low-opacity step numeral in a back corner of the dark card.
    isolation:isolate + negative z-index keeps it behind the badge/title
    text while still painting above the card's own navy background. */
-#processSticky .sticky-panel-inner {
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
-  padding: 64px 24px 44px;
-}
-
 .sticky-bg-num {
   position: absolute;
   z-index: -1;
@@ -889,13 +890,13 @@ section { position: relative; }
   user-select: none;
 }
 
-/* Each row is an INVISIBLE scroll slot with a generous, equal share of
-   scroll distance, so the sticky card stays pinned for a deliberate
-   stretch per step (see script.js) — .process-row itself carries no
-   border/background/padding. The visible, content-hugging card is the
-   nested .process-row-card (reuses .sticky-row's border/padding/
-   is-active styling; the class lives on this inner element instead so
-   scripts.js's `.sticky-row` query already finds the right node). */
+/* Each row (both sections) is an INVISIBLE scroll slot with a generous,
+   equal share of scroll distance, so the sticky card stays pinned for a
+   deliberate stretch per step (see script.js) — .process-row itself
+   carries no border/background/padding. The visible, content-hugging
+   card is the nested .process-row-card (reuses .sticky-row's border/
+   padding/is-active styling; the class lives on this inner element
+   instead so script.js's `.sticky-row` query already finds it). */
 .process-row {
   min-height: 80vh;
   display: flex;
@@ -964,8 +965,6 @@ section { position: relative; }
 /* Reduced motion: plain static two-column layout, no sticky, no scroll-tracking fade */
 @media (prefers-reduced-motion: reduce) {
   .sticky-panel { position: static; }
-  .sticky-panel-inner { transition: none; }
-  .sticky-panel-inner.is-fading { opacity: 1; }
   .sticky-row { transition: none; }
 }
 

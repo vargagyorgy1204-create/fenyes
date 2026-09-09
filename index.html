@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=5">
+<link rel="stylesheet" href="css/style.css?v=6">
 </head>
 <body>
 
@@ -177,58 +177,61 @@
     <div class="sticky-split" id="servicesSticky">
       <div class="sticky-panel">
         <div class="sticky-panel-inner">
-          <span class="sticky-badge"><i data-lucide="house" class="icon icon--lg"></i></span>
-          <span class="sticky-num">01</span>
-          <h3 class="sticky-title">Lakástakarítás</h3>
+          <span class="sticky-bg-num" aria-hidden="true">01</span>
+          <div class="process-fade">
+            <span class="sticky-badge"><i data-lucide="house" class="icon icon--lg"></i></span>
+            <span class="sticky-num">01</span>
+            <h3 class="sticky-title">Lakástakarítás</h3>
+          </div>
         </div>
       </div>
 
       <div class="sticky-rows">
-        <div class="sticky-row is-active" data-icon="house" data-num="01" data-title="Lakástakarítás">
-          <span class="sticky-row-icon"><i data-lucide="house" class="icon"></i></span>
-          <div>
-            <h3>Lakástakarítás</h3>
-            <p>Rendszeres vagy alkalmi takarítás otthonába, hogy mindig tiszta és barátságos legyen.</p>
+        <div class="process-row">
+          <div class="sticky-row process-row-card is-active" data-icon="house" data-num="01" data-title="Lakástakarítás" aria-label="1. Lakástakarítás">
+            <span class="process-row-num" aria-hidden="true">01</span>
+            <span class="sticky-row-icon"><i data-lucide="house" class="icon"></i></span>
+            <p>Rendszeres vagy alkalmi takarítást biztosítunk otthonába, igényei szerint heti, kétheti vagy havi ütemezéssel. Minden szobát alaposan átnézünk — a konyhától a fürdőszobáig —, hogy mindig tiszta és barátságos legyen, amikor hazaér. Ön csak annyit tesz, hogy megnyitja az ajtót, a többit ránk bízhatja.</p>
           </div>
         </div>
 
-        <div class="sticky-row" data-icon="briefcase" data-num="02" data-title="Irodatakarítás">
-          <span class="sticky-row-icon"><i data-lucide="briefcase" class="icon"></i></span>
-          <div>
-            <h3>Irodatakarítás</h3>
-            <p>Makulátlan és higiénikus munkakörnyezet vállalkozása és munkatársai számára.</p>
+        <div class="process-row">
+          <div class="sticky-row process-row-card" data-icon="briefcase" data-num="02" data-title="Irodatakarítás" aria-label="2. Irodatakarítás">
+            <span class="process-row-num" aria-hidden="true">02</span>
+            <span class="sticky-row-icon"><i data-lucide="briefcase" class="icon"></i></span>
+            <p>Makulátlan és higiénikus munkakörnyezetet teremtünk vállalkozása és munkatársai számára, munkaidőn kívül is, hogy a mindennapi rutint ne zavarjuk. Közös terektől az egyéni irodákig mindent alaposan fertőtlenítünk és rendbe teszünk. Egy tiszta iroda nemcsak jól néz ki — a csapat produktivitását és egészségét is támogatja.</p>
           </div>
         </div>
 
-        <div class="sticky-row" data-icon="shield-check" data-num="03" data-title="Mélytakarítás">
-          <span class="sticky-row-icon"><i data-lucide="shield-check" class="icon"></i></span>
-          <div>
-            <h3>Mélytakarítás</h3>
-            <p>Alapos, részletekre figyelő tisztítás minden zugban — a rejtett szennyeződésekig.</p>
+        <div class="process-row">
+          <div class="sticky-row process-row-card" data-icon="shield-check" data-num="03" data-title="Mélytakarítás" aria-label="3. Mélytakarítás">
+            <span class="process-row-num" aria-hidden="true">03</span>
+            <span class="sticky-row-icon"><i data-lucide="shield-check" class="icon"></i></span>
+            <p>Alapos, részletekre figyelő tisztítást végzünk minden zugban — a rejtett szennyeződésekig, ahová a mindennapi takarítás nem ér el. Ideális nagytakarításhoz, évszakváltáskor vagy különleges alkalmak előtt. Eredmény: egy tér, amely nemcsak tisztának tűnik, hanem valóban az is.</p>
           </div>
         </div>
 
-        <div class="sticky-row" data-icon="truck" data-num="04" data-title="Költözési Takarítás">
-          <span class="sticky-row-icon"><i data-lucide="truck" class="icon"></i></span>
-          <div>
-            <h3>Költözési Takarítás</h3>
-            <p>Zökkenőmentes be- és kiköltözés friss, makulátlan lakótérrel.</p>
+        <div class="process-row">
+          <div class="sticky-row process-row-card" data-icon="truck" data-num="04" data-title="Költözési Takarítás" aria-label="4. Költözési Takarítás">
+            <span class="process-row-num" aria-hidden="true">04</span>
+            <span class="sticky-row-icon"><i data-lucide="truck" class="icon"></i></span>
+            <p>Zökkenőmentes be- vagy kiköltözést biztosítunk friss, makulátlan lakótérrel — akár az előző lakóktól átvett, akár az új otthonába költöző Ön számára. Minden felületet, szekrényt és sarkot alaposan átnézünk, mielőtt bepakol vagy elköszön a régi otthontól. Egy gonddal kevesebb a költözés amúgy is zsúfolt napjaiból.</p>
           </div>
         </div>
 
-        <div class="sticky-row" data-icon="layers" data-num="05" data-title="Szőnyegtisztítás">
-          <span class="sticky-row-icon"><i data-lucide="layers" class="icon"></i></span>
-          <div>
-            <h3>Szőnyegtisztítás</h3>
-            <p>Professzionális folttalanítás és mélytisztítás szőnyegeknek, kárpitoknak.</p>
+        <div class="process-row">
+          <div class="sticky-row process-row-card" data-icon="layers" data-num="05" data-title="Szőnyegtisztítás" aria-label="5. Szőnyegtisztítás">
+            <span class="process-row-num" aria-hidden="true">05</span>
+            <span class="sticky-row-icon"><i data-lucide="layers" class="icon"></i></span>
+            <p>Professzionális folttalanítást és mélytisztítást végzünk szőnyegeknek és kárpitoknak, speciális gépekkel és kíméletes tisztítószerekkel. Eltávolítjuk a beépült port, allergéneket és makacs foltokat, amelyeket a porszívó önmagában nem old meg. Szőnyege nemcsak tisztább, de frissebb és puhább is lesz.</p>
           </div>
         </div>
 
-        <div class="sticky-row" data-icon="app-window" data-num="06" data-title="Ablaktisztítás">
-          <span class="sticky-row-icon"><i data-lucide="app-window" class="icon"></i></span>
-          <div>
-            <h3>Ablaktisztítás</h3>
-            <p>Csíkmentes, ragyogóan tiszta ablakok — belülről és kívülről egyaránt.</p>
+        <div class="process-row">
+          <div class="sticky-row process-row-card" data-icon="app-window" data-num="06" data-title="Ablaktisztítás" aria-label="6. Ablaktisztítás">
+            <span class="process-row-num" aria-hidden="true">06</span>
+            <span class="sticky-row-icon"><i data-lucide="app-window" class="icon"></i></span>
+            <p>Csíkmentes, ragyogóan tiszta ablakokat biztosítunk — belülről és kívülről egyaránt, a keretek és párkányok részletes átnézésével. Magasban lévő vagy nehezen elérhető ablakokhoz is megfelelő eszközökkel és tapasztalattal rendelkezünk. Több természetes fény, tisztább kilátás — apró változás, amit azonnal észrevesz.</p>
           </div>
         </div>
       </div>
@@ -681,6 +684,6 @@
 </button>
 
 <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
-<script src="js/script.js?v=4"></script>
+<script src="js/script.js?v=5"></script>
 </body>
 </html>
