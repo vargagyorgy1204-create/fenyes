@@ -1127,7 +1127,7 @@ section { position: relative; }
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 64px;
-  align-items: center;
+  align-items: stretch;
 }
 
 .excellence h2 { color: #fff; font-size: clamp(28px, 3.2vw, 38px); }
@@ -1165,6 +1165,7 @@ section { position: relative; }
   border-radius: var(--radius-lg);
   overflow: hidden;
   aspect-ratio: 5/4.4;
+  height: 100%;
   box-shadow: var(--shadow-lg);
 }
 .excellence-photo img { width: 100%; height: 100%; object-fit: cover; }
@@ -1442,11 +1443,8 @@ section { position: relative; }
   gap: 10px;
   padding: 16px;
   background: linear-gradient(0deg, rgba(16,31,60,0.75), transparent);
-  opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 0.3s var(--ease), transform 0.3s var(--ease);
+  opacity: 1;
 }
-.team-card:hover .team-social { opacity: 1; transform: translateY(0); }
 .team-social a {
   width: 34px; height: 34px;
   border-radius: 50%;
@@ -1475,7 +1473,6 @@ section { position: relative; }
    ========================================================================== */
 
 .brands { padding: 56px 0; border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); }
-.brands-label { text-align: center; font-size: 13.5px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--color-muted); font-family: var(--font-heading); font-weight: 600; margin-bottom: 34px; }
 
 .brands-row {
   display: flex;
@@ -1518,7 +1515,7 @@ section { position: relative; }
   gap: 40px;
   border-radius: var(--radius-lg);
   background: linear-gradient(135deg, var(--color-navy-light), #0B1730);
-  border: 1px solid rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.18);
   padding: 56px 60px;
   margin-bottom: 72px;
   overflow: hidden;
