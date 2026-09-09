@@ -1294,9 +1294,9 @@ section { position: relative; }
   background: radial-gradient(circle, var(--color-accent-glow), transparent 70%);
   top: -10px;
   right: 6%;
-  opacity: 0.55;
-  filter: blur(25px);
-  animation: hero-float-1 18s ease-in-out infinite;
+  opacity: 0.65;
+  filter: blur(20px);
+  animation: cta-float-1 14s ease-in-out infinite;
 }
 .cta-blob--2 {
   width: 110px;
@@ -1304,9 +1304,28 @@ section { position: relative; }
   background: radial-gradient(circle, var(--color-warm, var(--color-accent)), transparent 70%);
   bottom: -10px;
   right: 28%;
-  opacity: 0.55;
-  filter: blur(25px);
-  animation: hero-float-2 22s ease-in-out infinite;
+  opacity: 0.65;
+  filter: blur(20px);
+  animation: cta-float-2 17s ease-in-out infinite;
+}
+
+/* Uneven keyframe spacing + non-matching durations (14s/17s) instead of
+   a clean there-and-back sweep, so the two blobs wander unpredictably
+   rather than pulsing in visible sync. */
+@keyframes cta-float-1 {
+  0%, 100% { translate: 0 0; scale: 1; }
+  15% { translate: 22px -14px; scale: 1.06; }
+  35% { translate: -16px 12px; scale: 0.95; }
+  55% { translate: 12px 18px; scale: 1.09; }
+  75% { translate: -20px -10px; scale: 0.97; }
+  90% { translate: 10px -16px; scale: 1.04; }
+}
+@keyframes cta-float-2 {
+  0%, 100% { translate: 0 0; scale: 1; }
+  20% { translate: -16px -12px; scale: 1.07; }
+  40% { translate: 14px 10px; scale: 0.94; }
+  60% { translate: -10px 16px; scale: 1.05; }
+  80% { translate: 18px -14px; scale: 0.96; }
 }
 
 .cta-banner h2 { color: #fff; font-size: clamp(24px, 2.8vw, 32px); max-width: 480px; }
