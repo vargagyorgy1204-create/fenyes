@@ -689,7 +689,7 @@ section { position: relative; }
   background: radial-gradient(circle, var(--color-accent-glow), transparent 70%);
   top: -5%;
   left: 5%;
-  opacity: 0.22;
+  opacity: 0.45;
   filter: blur(55px);
   animation: hero-float-1-wide 18s ease-in-out infinite;
 }
@@ -699,7 +699,7 @@ section { position: relative; }
   background: radial-gradient(circle, var(--color-accent), transparent 70%);
   bottom: -8%;
   right: 10%;
-  opacity: 0.22;
+  opacity: 0.45;
   filter: blur(55px);
   animation: hero-float-2-wide 22s ease-in-out infinite;
 }
@@ -709,7 +709,7 @@ section { position: relative; }
   background: radial-gradient(circle, var(--color-warm, var(--color-accent-dark)), transparent 70%);
   top: 25%;
   right: 25%;
-  opacity: 0.22;
+  opacity: 0.45;
   filter: blur(55px);
   animation: hero-float-3-wide 26s ease-in-out infinite;
 }
