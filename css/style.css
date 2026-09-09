@@ -1308,9 +1308,39 @@ section { position: relative; }
   filter: blur(20px);
   animation: cta-float-2 17s ease-in-out infinite;
 }
+.cta-blob--3 {
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle, var(--color-accent-dark), transparent 70%);
+  top: -15px;
+  left: 3%;
+  opacity: 0.6;
+  filter: blur(20px);
+  animation: cta-float-3 15s ease-in-out infinite;
+}
+.cta-blob--4 {
+  width: 95px;
+  height: 95px;
+  background: radial-gradient(circle, var(--color-accent-glow), transparent 70%);
+  bottom: -15px;
+  left: 20%;
+  opacity: 0.6;
+  filter: blur(20px);
+  animation: cta-float-4 19s ease-in-out infinite;
+}
+.cta-blob--5 {
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle, var(--color-accent), transparent 70%);
+  top: 30%;
+  left: 48%;
+  opacity: 0.55;
+  filter: blur(18px);
+  animation: cta-float-5 13s ease-in-out infinite;
+}
 
-/* Uneven keyframe spacing + non-matching durations (14s/17s) instead of
-   a clean there-and-back sweep, so the two blobs wander unpredictably
+/* Uneven keyframe spacing + non-matching durations (13-19s) instead of
+   a clean there-and-back sweep, so the five blobs wander unpredictably
    rather than pulsing in visible sync. */
 @keyframes cta-float-1 {
   0%, 100% { translate: 0 0; scale: 1; }
@@ -1326,6 +1356,25 @@ section { position: relative; }
   40% { translate: 14px 10px; scale: 0.94; }
   60% { translate: -10px 16px; scale: 1.05; }
   80% { translate: 18px -14px; scale: 0.96; }
+}
+@keyframes cta-float-3 {
+  0%, 100% { translate: 0 0; scale: 1; }
+  25% { translate: 14px 16px; scale: 1.05; }
+  50% { translate: -18px -8px; scale: 0.96; }
+  70% { translate: 8px -18px; scale: 1.08; }
+}
+@keyframes cta-float-4 {
+  0%, 100% { translate: 0 0; scale: 1; }
+  18% { translate: -12px 14px; scale: 0.95; }
+  42% { translate: 18px 6px; scale: 1.07; }
+  65% { translate: -8px -16px; scale: 1.02; }
+  85% { translate: 14px -10px; scale: 0.97; }
+}
+@keyframes cta-float-5 {
+  0%, 100% { translate: 0 0; scale: 1; }
+  30% { translate: -10px -14px; scale: 1.1; }
+  60% { translate: 16px 10px; scale: 0.93; }
+  80% { translate: -14px 12px; scale: 1.04; }
 }
 
 .cta-banner h2 { color: #fff; font-size: clamp(24px, 2.8vw, 32px); max-width: 480px; }
