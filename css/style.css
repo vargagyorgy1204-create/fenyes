@@ -222,6 +222,31 @@ section { position: relative; }
 .icon-btn:hover { background: var(--color-accent); color: #fff; transform: translateY(-2px); }
 .icon-btn svg { width: 20px; height: 20px; }
 
+/* Testimonials prev/next: pill buttons with text, not the bare circular
+   icon — scoped here so the plain .icon-btn circle stays available
+   elsewhere. Hover fill/lift is inherited from .icon-btn:hover above. */
+.t-controls .icon-btn {
+  width: auto;
+  height: auto;
+  padding: 13px 24px;
+  gap: 9px;
+  border-radius: var(--radius-full);
+  background: transparent;
+  border: 2px solid var(--color-border);
+  color: var(--color-ink);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 14.5px;
+  transition: background 0.2s var(--ease), color 0.2s var(--ease), border-color 0.2s var(--ease), transform 0.2s var(--ease);
+}
+.t-controls .icon-btn:hover { border-color: var(--color-accent); }
+.t-controls .icon-btn svg { width: 16px; height: 16px; }
+
+@media (max-width: 480px) {
+  .t-controls .icon-btn span { display: none; }
+  .t-controls .icon-btn { padding: 13px; }
+}
+
 /* Reveal on scroll */
 .reveal {
   opacity: 0;
