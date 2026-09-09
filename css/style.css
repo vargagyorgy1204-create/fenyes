@@ -727,17 +727,22 @@ section { position: relative; }
   50% { translate: 25px -25px; scale: 0.95; }
 }
 
+/* Multi-stop paths (instead of a single there-and-back diagonal) so each
+   blob visibly swings left, then right, across one cycle. */
 @keyframes hero-float-1-wide {
   0%, 100% { translate: 0 0; scale: 1; }
-  50% { translate: 70px 55px; scale: 1.08; }
+  33% { translate: 65px 25px; scale: 1.06; }
+  66% { translate: -65px 35px; scale: 1.09; }
 }
 @keyframes hero-float-2-wide {
   0%, 100% { translate: 0 0; scale: 1; }
-  50% { translate: -50px -70px; scale: 1.05; }
+  33% { translate: -55px -30px; scale: 1.03; }
+  66% { translate: 55px -55px; scale: 1.06; }
 }
 @keyframes hero-float-3-wide {
   0%, 100% { translate: 0 0; scale: 1; }
-  50% { translate: 45px -45px; scale: 0.95; }
+  33% { translate: 45px -20px; scale: 0.97; }
+  66% { translate: -45px -30px; scale: 0.94; }
 }
 
 @media (prefers-reduced-motion: reduce) {
