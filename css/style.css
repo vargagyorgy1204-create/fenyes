@@ -1267,6 +1267,15 @@ section { position: relative; }
    CTA banner
    ========================================================================== */
 
+/* No vertical padding — the section's own box hugs the card exactly
+   (top edge = card's top line, bottom edge = card's bottom line).
+   Background matches Testimonials so the card reads as floating in one
+   continuous bg-soft field rather than a boxed-off section. */
+.cta-banner-section {
+  padding: 0;
+  background: var(--color-bg-soft);
+}
+
 .cta-banner {
   background: var(--color-dark);
   border-radius: var(--radius-lg);
