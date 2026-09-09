@@ -1440,6 +1440,10 @@ section { position: relative; }
 }
 .team-photo img {
   width: 100%; height: 100%; object-fit: cover;
+  /* Portraits have almost no headroom above the hair, so cover's default
+     center-crop shaves off the top of the head — anchor to the top edge
+     instead so all the cropping comes off the bottom. */
+  object-position: center top;
   transition: transform 0.5s var(--ease);
 }
 .team-card:hover .team-photo img { transform: scale(1.06); }
