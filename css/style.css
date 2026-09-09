@@ -232,14 +232,14 @@ section { position: relative; }
   gap: 9px;
   border-radius: var(--radius-full);
   background: transparent;
-  border: 2px solid var(--color-border);
+  border: 2px solid var(--color-accent);
   color: var(--color-ink);
   font-family: var(--font-heading);
   font-weight: 600;
   font-size: 14.5px;
   transition: background 0.2s var(--ease), color 0.2s var(--ease), border-color 0.2s var(--ease), transform 0.2s var(--ease);
 }
-.t-controls .icon-btn:hover { border-color: var(--color-accent); }
+.t-controls .icon-btn:hover { border-color: var(--color-accent-dark); }
 .t-controls .icon-btn svg { width: 16px; height: 16px; }
 
 @media (max-width: 480px) {
@@ -1517,8 +1517,9 @@ section { position: relative; }
    Newsletter (dark)
    ========================================================================== */
 
-.newsletter { background: var(--color-navy); overflow: hidden; }
-
+/* Newsletter CTA now lives inside <footer> (same navy background, so the
+   two used to read as one block with an odd double gap between them —
+   merged into a single continuous footer instead). */
 .newsletter-box {
   position: relative;
   display: grid;
@@ -1529,6 +1530,7 @@ section { position: relative; }
   background: linear-gradient(135deg, var(--color-navy-light), #0B1730);
   border: 1px solid rgba(255,255,255,0.08);
   padding: 56px 60px;
+  margin-bottom: 72px;
   overflow: hidden;
 }
 
@@ -1542,8 +1544,8 @@ section { position: relative; }
   top: -120px;
 }
 
-.newsletter h2 { color: #fff; font-size: clamp(24px, 2.8vw, 32px); }
-.newsletter p { color: rgba(255,255,255,0.6); margin-top: 14px; font-size: 15.5px; max-width: 420px; }
+.newsletter-box h2 { color: #fff; font-size: clamp(24px, 2.8vw, 32px); }
+.newsletter-box p { color: rgba(255,255,255,0.6); margin-top: 14px; font-size: 15.5px; max-width: 420px; }
 
 .newsletter-form {
   display: flex;
@@ -1569,8 +1571,8 @@ section { position: relative; }
 .newsletter-form.success input { color: var(--color-accent-dark); }
 
 @media (max-width: 900px) {
-  .newsletter-box { grid-template-columns: 1fr; padding: 44px 28px; text-align: center; }
-  .newsletter p { margin-left: auto; margin-right: auto; }
+  .newsletter-box { grid-template-columns: 1fr; padding: 44px 28px; margin-bottom: 48px; text-align: center; }
+  .newsletter-box p { margin-left: auto; margin-right: auto; }
   .newsletter-form { max-width: 440px; margin: 0 auto; }
 }
 @media (max-width: 480px) {
@@ -1583,7 +1585,7 @@ section { position: relative; }
    Footer
    ========================================================================== */
 
-.footer { background: var(--color-dark); color: rgba(255,255,255,0.55); padding-top: 80px; }
+.footer { background: linear-gradient(to bottom, var(--color-navy-light) 0%, var(--color-dark) 100%); color: rgba(255,255,255,0.55); padding-top: 96px; }
 
 .footer-grid {
   display: grid;
