@@ -839,6 +839,17 @@ section { position: relative; }
 
 .sticky-title { color: #fff; font-size: clamp(21px, 2.2vw, 27px); }
 
+/* Services-only: the section's own heading now lives inside the dark
+   card instead of a separate .section-head above it — wider column +
+   more padding to fit it, and a thin divider before the badge/title
+   block below (mirrors .footer-grid's border-bottom treatment). */
+#servicesSticky { grid-template-columns: minmax(320px, 440px) 1fr; }
+#servicesSticky .sticky-panel-inner { padding: 48px 40px 40px; justify-content: flex-start; }
+
+.sticky-panel-intro { margin-bottom: 32px; padding-bottom: 28px; border-bottom: 1px solid rgba(255,255,255,0.12); }
+.sticky-panel-intro h2 { color: #fff; font-size: clamp(22px, 2.4vw, 30px); letter-spacing: -0.01em; }
+.sticky-panel-intro p { margin-top: 14px; color: rgba(255,255,255,0.75); font-size: 15px; line-height: 1.6; }
+
 .sticky-rows {
   display: flex;
   flex-direction: column;
@@ -877,6 +888,8 @@ section { position: relative; }
   .sticky-split { grid-template-columns: 1fr; gap: 28px; }
   .sticky-panel { position: static; }
   .sticky-panel-inner { min-height: 0; }
+  #servicesSticky { grid-template-columns: 1fr; }
+  #servicesSticky .sticky-panel-inner { padding: 40px 28px 32px; }
 }
 
 /* ==========================================================================
@@ -1123,7 +1136,7 @@ section { position: relative; }
 .stat-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+  gap: 24px;
   margin-top: 40px;
 }
 
@@ -1131,7 +1144,7 @@ section { position: relative; }
   background: rgba(255,255,255,0.05);
   border: 1px solid rgba(255,255,255,0.08);
   border-radius: var(--radius-md);
-  padding: 26px 24px;
+  padding: 28px 24px;
   transition: background 0.25s var(--ease), transform 0.25s var(--ease);
 }
 .stat-card:hover { background: rgba(255,255,255,0.09); transform: translateY(-4px); }
@@ -1155,32 +1168,6 @@ section { position: relative; }
   box-shadow: var(--shadow-lg);
 }
 .excellence-photo img { width: 100%; height: 100%; object-fit: cover; }
-
-.excellence-check {
-  position: absolute;
-  left: -28px;
-  bottom: -26px;
-  background: #fff;
-  color: var(--color-ink);
-  border-radius: var(--radius-md);
-  padding: 18px 22px;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  box-shadow: var(--shadow-lg);
-  max-width: 260px;
-}
-.excellence-check .icon {
-  width: 44px; height: 44px;
-  border-radius: 50%;
-  background: var(--color-accent);
-  color: #fff;
-  display: inline-flex; align-items: center; justify-content: center;
-  flex-shrink: 0;
-}
-.excellence-check .icon svg { width: 20px; height: 20px; }
-.excellence-check strong { display: block; font-family: var(--font-heading); font-size: 14.5px; }
-.excellence-check span { font-size: 12.5px; color: var(--color-muted); }
 
 /* Consolidated value propositions (merged from the former trust strip + benefits list) */
 .value-grid {
@@ -1224,7 +1211,6 @@ section { position: relative; }
   .stat-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
   .stat-card { padding: 20px 16px; }
   .stat-num { font-size: 27px; }
-  .excellence-check { left: 0; bottom: -20px; padding: 14px 16px; }
   .value-grid { grid-template-columns: 1fr; }
 }
 
