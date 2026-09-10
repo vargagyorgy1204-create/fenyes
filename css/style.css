@@ -587,7 +587,7 @@ section { position: relative; }
   display: flex;
   align-items: center;
   gap: 16px;
-  margin-top: 34px;
+  margin-top: 50px;
   flex-wrap: wrap;
 }
 
@@ -648,6 +648,7 @@ section { position: relative; }
 .hero-badge--experience {
   top: 26px;
   right: -34px;
+  width: 250px;
   background: var(--color-accent);
   display: flex;
   align-items: center;
@@ -670,12 +671,14 @@ section { position: relative; }
 .hero-badge--rating {
   bottom: 28px;
   right: -22px;
+  width: 250px;
   background: #fff;
   color: var(--color-ink);
   display: flex;
   align-items: center;
   gap: 12px;
 }
+.hero-badge--rating > span:last-child { min-width: 0; }
 .hero-badge--rating .icon {
   width: 42px; height: 42px;
   border-radius: 50%;
@@ -825,16 +828,10 @@ section { position: relative; }
 }
 .sticky-badge .icon { width: 30px; height: 30px; }
 
-.sticky-num {
-  display: block;
-  font-family: var(--font-heading);
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-accent);
-  margin-bottom: 10px;
-}
+/* Hidden rather than removed from the DOM — script.js's step-scroller
+   still queries/writes .sticky-num on every scroll step (both Services
+   and Process), so it must stay present, just visually gone. */
+.sticky-num { display: none; }
 
 .sticky-title { color: #fff; font-size: clamp(21px, 2.2vw, 27px); }
 
