@@ -675,7 +675,6 @@ section { position: relative; }
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 14px 20px;
 }
 .hero-badge--rating .icon {
   width: 42px; height: 42px;
