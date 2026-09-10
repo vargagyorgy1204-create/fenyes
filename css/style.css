@@ -649,6 +649,7 @@ section { position: relative; }
   top: 26px;
   right: -28px;
   width: 250px;
+  height: 78px;
   background: var(--color-accent);
   display: flex;
   align-items: center;
@@ -672,6 +673,7 @@ section { position: relative; }
   bottom: 28px;
   right: -28px;
   width: 250px;
+  height: 78px;
   background: #fff;
   color: var(--color-ink);
   display: flex;
