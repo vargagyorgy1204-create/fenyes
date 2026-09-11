@@ -1542,6 +1542,8 @@ section { position: relative; }
   object-position: center top;
   transition: transform 0.5s var(--ease);
 }
+.team-card:first-child .team-photo img { transform: scale(1.12); }
+.team-card:first-child:hover .team-photo img { transform: scale(1.12); }
 .team-card:hover .team-photo img { transform: scale(1.06); }
 
 .team-social {
