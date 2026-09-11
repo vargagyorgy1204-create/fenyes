@@ -1128,10 +1128,12 @@ section { position: relative; }
    2-col/4-col grids would. */
 .excellence-top {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 24px;
-  align-items: stretch;
+  align-items: end;
 }
+.excellence-content,
+.excellence-visual { min-width: 0; }
 .excellence-content { grid-column: 1 / 3; }
 .excellence-visual { grid-column: 3 / 5; }
 
@@ -1165,25 +1167,35 @@ section { position: relative; }
 }
 .stat-label { font-size: 14px; margin-top: 6px; color: rgba(255,255,255,0.6); }
 
-.excellence-visual { position: relative; }
+.excellence-visual {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+}
 .excellence-photo {
   border-radius: var(--radius-lg);
   overflow: hidden;
-  aspect-ratio: 5/4.4;
-  height: 100%;
+  width: 100%;
+  aspect-ratio: 1.47 / 1;
   box-shadow: var(--shadow-lg);
 }
 .excellence-photo img { width: 100%; height: 100%; object-fit: cover; }
+.excellence-photo-placeholder {
+  width: 100%;
+  height: 100%;
+  background: rgba(255,255,255,0.08);
+}
 
 /* Consolidated value propositions (merged from the former trust strip + benefits list) */
 .value-grid {
   margin-top: 64px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 24px;
 }
 
 .value-card {
+  min-width: 0;
   background: rgba(255,255,255,0.05);
   border: 1px solid rgba(255,255,255,0.08);
   border-radius: var(--radius-md);
@@ -1207,7 +1219,7 @@ section { position: relative; }
 .value-card h3 { color: #fff; font-size: 16px; margin-bottom: 8px; }
 .value-card p { font-size: 14px; color: rgba(255,255,255,0.6); }
 
-@media (max-width: 1024px) {
+@media (max-width: 900px) {
   .excellence-top { grid-template-columns: 1fr; }
   .excellence-content, .excellence-visual { grid-column: 1 / -1; }
   .excellence-visual { order: -1; max-width: 440px; margin: 0 auto 28px; }
@@ -1225,29 +1237,72 @@ section { position: relative; }
    Testimonials
    ========================================================================== */
 
-.testimonials { background: var(--color-bg-soft); }
+.testimonials {
+  background: var(--color-bg-soft);
+  overflow-anchor: none;
+  overflow: hidden;
+}
+
+/* Testimonial cards stay fixed while the page or horizontal slider is used. */
+.testimonials .reveal,
+.testimonials .reveal-zoom {
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
 
 .t-slider-wrap { position: relative; }
 
 .t-track {
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: minmax(300px, 1fr);
-  gap: 24px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  padding-bottom: 8px;
-  scrollbar-width: none;
+  position: relative;
+  min-height: 430px;
+  overflow: hidden;
+  overflow-anchor: none;
 }
-.t-track::-webkit-scrollbar { display: none; }
 
 .t-card {
-  scroll-snap-align: start;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: min(440px, 30%);
+  min-height: 348px;
+  cursor: pointer;
+  opacity: 0;
+  transform: translate3d(-50%, 20px, 0) scale(0.88);
+  pointer-events: none;
+  z-index: 1;
+  transition: transform 0.6s var(--ease-smooth), opacity 0.45s var(--ease), box-shadow 0.6s var(--ease), border-color 0.6s var(--ease);
   background: #fff;
   border-radius: var(--radius-md);
   padding: 32px 28px;
   box-shadow: var(--shadow-sm);
   border: 1px solid var(--color-border);
+}
+
+.t-card.is-active,
+.t-card.is-prev,
+.t-card.is-next { opacity: 1; pointer-events: auto; }
+.t-card.is-active {
+  width: min(440px, 44%);
+  transform: translate3d(-50%, 0, 0) scale(1);
+  box-shadow: 0 22px 55px rgba(16, 31, 60, 0.16), 0 0 0 1px rgba(20, 184, 166, 0.14);
+  border-color: rgba(20, 184, 166, 0.3);
+  z-index: 3;
+  animation: testimonial-focus 5s ease-in-out infinite;
+}
+.t-card.is-prev {
+  transform: translate3d(calc(-50% - 340px), 28px, 0) scale(0.84);
+  z-index: 2;
+}
+.t-card.is-next {
+  transform: translate3d(calc(-50% + 340px), 28px, 0) scale(0.84);
+  z-index: 2;
+}
+.t-card.is-hidden { opacity: 0; }
+
+@keyframes testimonial-focus {
+  0%, 100% { box-shadow: 0 22px 55px rgba(16, 31, 60, 0.16), 0 0 0 1px rgba(20, 184, 166, 0.14); }
+  50% { box-shadow: 0 28px 62px rgba(16, 31, 60, 0.2), 0 0 0 7px rgba(20, 184, 166, 0.08); }
 }
 
 .t-stars { display: flex; gap: 3px; color: var(--color-star); margin-bottom: 18px; }
@@ -1263,11 +1318,51 @@ section { position: relative; }
 .t-controls { display: flex; justify-content: center; gap: 12px; margin-top: 36px; }
 .t-dots { display: flex; align-items: center; gap: 8px; margin: 0 8px; }
 .t-dot {
-  width: 8px; height: 8px; border-radius: 50%;
-  background: var(--color-border);
-  transition: background 0.25s var(--ease), width 0.25s var(--ease);
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border: 2px solid rgba(16, 31, 60, 0.58);
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  transition: width 0.25s var(--ease), background 0.25s var(--ease), border-color 0.25s var(--ease), box-shadow 0.25s var(--ease);
 }
-.t-dot.active { background: var(--color-accent); width: 22px; border-radius: 4px; }
+.t-dot:hover { border-color: var(--color-accent-dark); background: rgba(20, 184, 166, 0.16); }
+.t-dot.active {
+  width: 30px;
+  border-color: var(--color-accent);
+  border-radius: 999px;
+  background: var(--color-accent);
+  box-shadow: 0 0 0 4px rgba(20, 184, 166, 0.12);
+}
+.t-dot:focus-visible {
+  outline: 3px solid var(--color-accent-glow);
+  outline-offset: 3px;
+}
+
+@media (max-width: 900px) {
+  .t-track { min-height: 430px; }
+  .t-card { width: min(500px, 40%); }
+  .t-card.is-active { width: min(500px, 68%); }
+  .t-card.is-prev { transform: translate3d(calc(-50% - 250px), 32px, 0) scale(0.82); }
+  .t-card.is-next { transform: translate3d(calc(-50% + 250px), 32px, 0) scale(0.82); }
+}
+
+@media (max-width: 640px) {
+  .t-track { min-height: 410px; overflow: hidden; }
+  .t-card { width: 100%; min-height: 370px; }
+  .t-card.is-active { width: 100%; }
+  .t-card.is-prev { transform: translate3d(calc(-50% - 120px), 24px, 0) scale(0.86); opacity: 0; pointer-events: none; }
+  .t-card.is-next { transform: translate3d(calc(-50% + 120px), 24px, 0) scale(0.86); opacity: 0; pointer-events: none; }
+  .t-controls { gap: 8px; margin-top: 28px; }
+  .t-controls .icon-btn { padding: 13px 16px; }
+  .t-dots { gap: 6px; margin: 0 4px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .t-card { transition: none; }
+  .t-card.is-active { animation: none; }
+}
 
 /* ==========================================================================
    CTA banner
@@ -1431,6 +1526,9 @@ section { position: relative; }
   aspect-ratio: 3.5/4;
   box-shadow: var(--shadow-sm);
 }
+.team-photo--empty {
+  background: linear-gradient(145deg, rgba(20, 184, 166, 0.2), rgba(16, 31, 60, 0.16));
+}
 .team-photo img {
   width: 100%; height: 100%; object-fit: cover;
   /* Portraits have almost no headroom above the hair, so cover's default
@@ -1560,7 +1658,13 @@ section { position: relative; }
   min-width: 0;
 }
 .newsletter-form input::placeholder { color: var(--color-muted); }
-.newsletter-note { font-size: 12.5px; color: rgba(255,255,255,0.4); margin-top: 14px; }
+.newsletter-note {
+  width: 100%;
+  font-size: 12.5px;
+  color: rgba(255,255,255,0.4);
+  margin-top: 14px;
+  text-align: center;
+}
 
 .newsletter-form.success input { color: var(--color-accent-dark); }
 

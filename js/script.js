@@ -170,43 +170,67 @@
 
   if (track && dotsWrap) {
     var cards = Array.prototype.slice.call(track.children);
+    var testimonialIndex = 0;
 
     cards.forEach(function (_, i) {
       var dot = document.createElement('button');
       dot.className = 't-dot' + (i === 0 ? ' active' : '');
       dot.setAttribute('aria-label', 'Vélemény ' + (i + 1));
-      dot.addEventListener('click', function () { scrollToCard(i); });
+      dot.addEventListener('click', function () { setTestimonial(i); });
       dotsWrap.appendChild(dot);
     });
 
     var dots = Array.prototype.slice.call(dotsWrap.children);
 
-    function activeIndex() {
-      var scrollLeft = track.scrollLeft;
-      var cardWidth = cards[0].getBoundingClientRect().width + 24;
-      return Math.round(scrollLeft / cardWidth);
+    function wrapIndex(index) {
+      return (index + cards.length) % cards.length;
     }
 
-    function updateDots() {
-      var idx = Math.min(activeIndex(), dots.length - 1);
-      dots.forEach(function (d, i) { d.classList.toggle('active', i === idx); });
+    function setCardState(card, state, index) {
+      card.classList.remove('is-active', 'is-prev', 'is-next', 'is-hidden');
+      card.classList.add(state);
+      card.setAttribute('aria-current', state === 'is-active' ? 'true' : 'false');
+      card.setAttribute('aria-label', 'Vélemény ' + (index + 1));
     }
 
-    function scrollToCard(i) {
-      var cardWidth = cards[0].getBoundingClientRect().width + 24;
-      track.scrollTo({ left: i * cardWidth, behavior: reduceMotion ? 'auto' : 'smooth' });
+    function setTestimonial(index) {
+      testimonialIndex = wrapIndex(index);
+      var previousIndex = wrapIndex(testimonialIndex - 1);
+      var nextIndex = wrapIndex(testimonialIndex + 1);
+
+      cards.forEach(function (card, i) {
+        if (i === testimonialIndex) setCardState(card, 'is-active', i);
+        else if (i === previousIndex) setCardState(card, 'is-prev', i);
+        else if (i === nextIndex) setCardState(card, 'is-next', i);
+        else setCardState(card, 'is-hidden', i);
+      });
+
+      dots.forEach(function (dot, i) {
+        dot.classList.toggle('active', i === testimonialIndex);
+        dot.setAttribute('aria-current', i === testimonialIndex ? 'true' : 'false');
+      });
     }
 
-    track.addEventListener('scroll', function () {
-      window.requestAnimationFrame(updateDots);
-    }, { passive: true });
+    cards.forEach(function (card) {
+      card.setAttribute('role', 'button');
+      card.setAttribute('tabindex', '0');
+      card.addEventListener('click', function () { setTestimonial(testimonialIndex + 1); });
+      card.addEventListener('keydown', function (event) {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          setTestimonial(testimonialIndex + 1);
+        }
+      });
+    });
 
     if (prevBtn) prevBtn.addEventListener('click', function () {
-      scrollToCard(Math.max(0, activeIndex() - 1));
+      setTestimonial(testimonialIndex - 1);
     });
     if (nextBtn) nextBtn.addEventListener('click', function () {
-      scrollToCard(Math.min(cards.length - 1, activeIndex() + 1));
+      setTestimonial(testimonialIndex + 1);
     });
+
+    setTestimonial(0);
   }
 
   /* ---------------------------------------------------------
