@@ -226,10 +226,10 @@ section { position: relative; }
    icon — scoped here so the plain .icon-btn circle stays available
    elsewhere. Hover fill/lift is inherited from .icon-btn:hover above. */
 .t-controls .icon-btn {
-  width: auto;
-  height: auto;
-  padding: 13px 24px;
-  gap: 9px;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  gap: 0;
   border-radius: var(--radius-full);
   background: transparent;
   border: 2px solid var(--color-accent);
@@ -237,14 +237,13 @@ section { position: relative; }
   font-family: var(--font-heading);
   font-weight: 600;
   font-size: 14.5px;
-  transition: background 0.2s var(--ease), color 0.2s var(--ease), border-color 0.2s var(--ease), transform 0.2s var(--ease);
-}
+  transition: none; }
+.t-controls .icon-btn:hover { border-color: var(--color-accent-dark); transform: none; }
 .t-controls .icon-btn:hover { border-color: var(--color-accent-dark); }
 .t-controls .icon-btn svg { width: 16px; height: 16px; }
 
 @media (max-width: 480px) {
-  .t-controls .icon-btn span { display: none; }
-  .t-controls .icon-btn { padding: 13px; }
+  .t-controls .icon-btn { width: 48px; padding: 0; }
 }
 
 /* Reveal on scroll */
@@ -1179,7 +1178,13 @@ section { position: relative; }
   aspect-ratio: 1.47 / 1;
   box-shadow: var(--shadow-lg);
 }
-.excellence-photo img { width: 100%; height: 100%; object-fit: cover; }
+.excellence-photo img {
+  width: calc(100% + 2px);
+  max-width: none;
+  height: 100%;
+  object-fit: cover;
+  transform: translateX(-1px);
+}
 .excellence-photo-placeholder {
   width: 100%;
   height: 100%;
@@ -1561,7 +1566,7 @@ section { position: relative; }
 .team-social svg { width: 15px; height: 15px; }
 
 .team-card h3 { font-size: 18px; margin-top: 20px; }
-.team-card span { font-size: 13.5px; color: var(--color-accent-dark); font-family: var(--font-heading); font-weight: 500; }
+.team-card span { font-size: 13.5px; color: var(--color-ink); font-family: var(--font-heading); font-weight: 500; }
 
 .team-cta { text-align: center; margin-top: 48px; }
 
@@ -1576,7 +1581,12 @@ section { position: relative; }
    Brands strip
    ========================================================================== */
 
-.brands { padding: 56px 0; border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); }
+.brands {
+  padding: 32px 0;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  font-family: 'Helios', sans-serif;
+}
 
 .brands-row {
   display: flex;
@@ -1587,7 +1597,7 @@ section { position: relative; }
 }
 
 .brand-logo {
-  font-family: var(--font-heading);
+  font-family: 'Helios', sans-serif;
   font-weight: 700;
   font-size: 21px;
   color: #AEB7C9;
@@ -1659,7 +1669,11 @@ section { position: relative; }
 }
 .newsletter-form input::placeholder { color: var(--color-muted); }
 .newsletter-note {
+  display: flex;
+  justify-content: center;
   width: 100%;
+  max-width: none;
+  transform: translateX(30px);
   font-size: 12.5px;
   color: rgba(255,255,255,0.4);
   margin-top: 14px;
@@ -1772,7 +1786,7 @@ section { position: relative; }
   border-radius: 50%;
   background: var(--color-navy);
   color: #fff;
-  border: none;
+  border: 2px solid rgba(255,255,255,0.9);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1780,11 +1794,11 @@ section { position: relative; }
   opacity: 0;
   visibility: hidden;
   transform: translateY(12px);
-  transition: opacity 0.3s var(--ease), transform 0.3s var(--ease), visibility 0.3s var(--ease), background 0.2s var(--ease);
+  transition: opacity 0.3s var(--ease), transform 0.3s var(--ease), visibility 0.3s var(--ease);
   z-index: 60;
 }
 .back-to-top.visible { opacity: 1; visibility: visible; transform: translateY(0); }
-.back-to-top:hover { background: var(--color-accent); }
+.back-to-top:hover { background: var(--color-accent); border-color: #fff; }
 .back-to-top svg { width: 20px; height: 20px; }
 
 /* ==========================================================================
