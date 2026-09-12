@@ -1639,24 +1639,31 @@ section { position: relative; }
    ========================================================================== */
 
 .brands {
-  padding: 32px 0;
-  border-top: 1px solid var(--color-border);
-  border-bottom: 1px solid var(--color-border);
-  font-family: 'Helios', sans-serif;
+  padding: 16px 0;
+  font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
 .brands-row {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   flex-wrap: wrap;
-  gap: 28px;
+  row-gap: 16px;
+  column-gap: 14px;
+}
+
+.brand-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #AEB7C9;
+  flex-shrink: 0;
 }
 
 .brand-logo {
-  font-family: 'Helios', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 700;
-  font-size: 21px;
+  font-size: 15px;
   color: #AEB7C9;
   display: inline-flex;
   align-items: center;
@@ -1668,7 +1675,7 @@ section { position: relative; }
 .brand-logo:hover { color: var(--color-ink); }
 
 @media (max-width: 768px) {
-  .brands-row { justify-content: center; gap: 28px 40px; }
+  .brands-row { justify-content: center; row-gap: 14px; column-gap: 12px; }
 }
 
 /* ==========================================================================
@@ -1754,7 +1761,7 @@ section { position: relative; }
    Footer
    ========================================================================== */
 
-.footer { background: linear-gradient(to bottom, var(--color-navy-light) 0%, var(--color-dark) 100%); color: rgba(255,255,255,0.55); padding-top: 96px; }
+.footer { background: linear-gradient(to bottom, #24406F 0%, var(--color-navy-light) 45%, var(--color-dark) 100%); color: rgba(255,255,255,0.55); padding-top: 96px; }
 
 .footer-grid {
   display: grid;
@@ -1764,18 +1771,12 @@ section { position: relative; }
   border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
-/* The logo's subtitle line ("Takarítási Szerviz") is dark ink, which
-   disappears against the navy footer — so it sits on its own light chip
-   here rather than directly on the dark background. */
 .footer-about .logo {
-  margin-bottom: 18px;
-  background: rgba(255,255,255,0.95);
-  border-radius: 12px;
-  padding: 10px 16px;
+  margin-bottom: 2px;
 }
-.footer-about .logo-img { height: 50px; transform: scale(1.12); }
+.footer-about .logo-img { height: 100px; transform: scale(1.12); }
 .footer-about p { font-size: 14.5px; line-height: 1.75; max-width: 300px; }
-.footer-social { display: flex; gap: 10px; margin-top: 24px; }
+.footer-social { display: flex; gap: 10px; margin-top: 8px; }
 .footer-social a {
   width: 38px; height: 38px;
   border-radius: 50%;
@@ -1786,16 +1787,29 @@ section { position: relative; }
 .footer-social a:hover { background: var(--color-accent); transform: translateY(-3px); }
 .footer-social svg { width: 16px; height: 16px; }
 
-.footer h4 { color: #fff; font-size: 16px; margin-bottom: 24px; }
+.footer h4 { color: #fff; font-size: 16px; margin-bottom: 8px; }
 
-.footer-links { display: flex; flex-direction: column; gap: 13px; }
+.footer-links { display: flex; flex-direction: column; gap: 4px; }
 .footer-links a { font-size: 14.5px; transition: color 0.2s var(--ease), padding-left 0.2s var(--ease); }
 .footer-links a:hover { color: var(--color-accent); padding-left: 4px; }
 
-.footer-contact { display: flex; flex-direction: column; gap: 16px; }
+.footer-contact { display: flex; flex-direction: column; gap: 6px; }
 .footer-contact li { display: flex; align-items: flex-start; gap: 12px; font-size: 14.5px; }
 .footer-contact svg { width: 18px; height: 18px; color: var(--color-accent); flex-shrink: 0; margin-top: 2px; }
 .footer-contact a:hover { color: #fff; }
+
+/* Headings stay top-aligned across columns; only the list is pushed to
+   the bottom so it lines up with the footer-social icon row's bottom edge. */
+.footer-nav, .footer-services, .footer-contact-wrap {
+  display: flex;
+  flex-direction: column;
+  padding-top: 45px;
+}
+.footer-nav .footer-links,
+.footer-services .footer-links,
+.footer-contact-wrap .footer-contact {
+  margin-top: auto;
+}
 
 .footer-bottom {
   position: relative;
