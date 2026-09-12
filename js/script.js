@@ -3,6 +3,24 @@
 
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  var headerButton = document.querySelector('.nav-actions > a.btn-primary');
+  if (headerButton) {
+    var headerButtonText = headerButton.textContent.trim();
+    var letterGroup = document.createElement('span');
+    letterGroup.className = 'header-button-letter-group';
+    headerButton.textContent = '';
+
+    Array.from(headerButtonText).forEach(function (character, index) {
+      var letter = document.createElement('span');
+      letter.className = 'header-button-letter';
+      letter.textContent = character === ' ' ? '\u00a0' : character;
+      letter.style.setProperty('--letter-index', index);
+      letterGroup.appendChild(letter);
+    });
+
+    headerButton.appendChild(letterGroup);
+  }
+
   /* ---------------------------------------------------------
      Unified scroll loop — header shadow, back-to-top, progress
      bar and parallax all read/write in one rAF-batched pass so
